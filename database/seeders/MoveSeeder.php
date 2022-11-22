@@ -48,6 +48,10 @@ class MoveSeeder extends Seeder
                 'name' => 'Leer',
                 'descrption' => ' The user gives opposing Pokémon an intimidating leer that lowers the Defense stat.'
             ],
+            [
+                'name' => 'Pound',
+                'descrption' => 'The user pounds the opponent with their tail, legs, body, etc.'
+            ],
             
         ];
 
