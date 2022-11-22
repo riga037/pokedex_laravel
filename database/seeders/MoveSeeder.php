@@ -31,7 +31,24 @@ class MoveSeeder extends Seeder
             [
                 'name' => 'Tackle',
                 'description' => 'A physical attack in which the user charges and slams into the target with its whole body.'
-            ]
+            ],
+            [
+                'name' => 'Growl',
+                'description' => 'The user growls in an endearing way, making opposing Pokémon less wary. This lowers their Attack stats.'
+            ],
+            [
+                'name' => 'Scratch',
+                'descrption' => 'Hard, pointed, sharp claws rake the target to inflict damage.'
+            ],
+            [
+                'name' => 'Tail Whip',
+                'descrption' => 'The user wags its tail cutely, making opposing Pokémon less wary and lowering their Defense stats.'
+            ],
+            [
+                'name' => 'Leer',
+                'descrption' => ' The user gives opposing Pokémon an intimidating leer that lowers the Defense stat.'
+            ],
+            
         ];
 
         Move::insert($moves);

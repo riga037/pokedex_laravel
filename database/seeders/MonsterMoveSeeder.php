@@ -15,14 +15,14 @@ class MonsterMoveSeeder extends Seeder
      */
     public function run()
     {
-        //
-        /*DB::table('monsters_moves')->insert([
+        
+        DB::table('monsters_moves')->insert([
             'monster_id' => 1,
             'move_id' => 1        
         ]);
         DB::table('monsters_moves')->insert([
             'monster_id' => 1,
-            'move_id' => 2        
+            'move_id' => 4        
         ]);
         DB::table('monsters_moves')->insert([
             'monster_id' => 1,
@@ -44,7 +44,7 @@ class MonsterMoveSeeder extends Seeder
         DB::table('monsters_moves')->insert([
             'monster_id' => 2,
             'move_id' => 7        
-        ]);*/
+        ]);
         
         
 
