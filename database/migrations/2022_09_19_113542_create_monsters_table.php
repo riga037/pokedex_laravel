@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('monstername',75);
             $table->string('category',25);
-            $table->string('description',50);
+            $table->string('description',5000);
             $table->foreignId('type_id')->constrained();
             $table->timestamps();
         });

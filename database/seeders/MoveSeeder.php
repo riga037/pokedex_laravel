@@ -17,7 +17,7 @@ class SuperpowerSeeder extends Seeder
     {
         //
 
-        $superpowers = [
+        /*$superpowers = [
             ['description'=>'Accelerated Healing'],
             ['description'=>'Berserk Mode'],
             ['description'=>'Bloodlust'],
@@ -59,7 +59,7 @@ class SuperpowerSeeder extends Seeder
             ['description'=> 'Acrobatics'],
         ];
 
-        Superpower::insert($superpowers);
+        Superpower::insert($superpowers);*/
 
     }
 }
