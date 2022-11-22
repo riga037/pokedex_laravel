@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Superpower;
+use App\Models\Move;
 
-class SuperpowerSeeder extends Seeder
+class MoveSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,51 +15,26 @@ class SuperpowerSeeder extends Seeder
      */
     public function run()
     {
-        //
-
-        /*$superpowers = [
-            ['description'=>'Accelerated Healing'],
-            ['description'=>'Berserk Mode'],
-            ['description'=>'Bloodlust'],
-            ['description'=> 'Cold Resistance'],
-            ['description'=> 'Durability'],
-            ['description'=> 'Electricity Resistance'],
-            ['description'=>'Emotional Power Up'],
-            ['description'=>'Endurance'],
-            ['description'=>'Energy Resistance'],
-            ['description'=> 'Fire Resistance'],
-            ['description'=> 'Gamma Mutant Physiology'],
-            ['description'=>'Heat Resistance'],
-            ['description'=> 'Hellfire Resistance'],
-            ['description'=> 'Insanity'],
-            ['description'=> 'Intelligence'],
-            ['description'=> 'Invulnerability'],
-            ['description'=> 'Radiation Absorption'],
-            ['description'=> 'Radiation Control'],
-            ['description'=> 'Radiation Immunity'],
-            ['description'=> 'Rage Power'],
-            ['description'=> 'Reactive Power Level'],
-            ['description'=> 'Regeneration'],
-            ['description'=> 'Seismic Power'],
-            ['description'=> 'Stamina'],
-            ['description'=> 'Super Speed'],
-            ['description'=> 'Super Strength'],
-            ['description'=> 'Agility'],
-            ['description'=> 'Danger Sense'],
-            ['description'=> 'Durability'],
-            ['description'=> 'Intelligence'],
-            ['description'=> 'Peak Human Condition'],
-            ['description'=> 'Reflexes'],
-            ['description'=> 'Stamina'],
-            ['description'=> 'Substance Secretion'],
-            ['description'=> 'Super Speed'],
-            ['description'=> 'Super Strength'],
-            ['description'=> 'Wallcrawling'],
-            ['description'=> 'Web Creation'],
-            ['description'=> 'Acrobatics'],
+        $moves = [
+            [
+                'name' => 'Razor Leaf',
+                'description' => 'Sharp-edged leaves are launched to slash at opposing Pokémon. Critical hits land more easily.'
+            ],
+            [
+                'name' => 'Ember',
+                'description'=>'The target is attacked with small flames. This may also leave the target with a burn.'
+            ],
+            [
+                'name' => 'Water Gun',
+                'description' => 'The target is blasted with a forceful shot of water.'
+            ],
+            [
+                'name' => 'Tackle',
+                'description' => 'A physical attack in which the user charges and slams into the target with its whole body.'
+            ]
         ];
 
-        Superpower::insert($superpowers);*/
+        Move::insert($moves);
 
     }
 }

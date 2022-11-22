@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
         	TypeSeeder::class,
             MonsterSeeder::class,
+            MoveSeeder::class,
          ]);
     }
 }
