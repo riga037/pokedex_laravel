@@ -29,6 +29,10 @@ class TypeSeeder extends Seeder
                 'name' => 'Water',
                 'description' => 'There are more Pokémon of this type than any other type due to the large number of marine creatures to base species from.'
             ],
+            [
+                'name' => 'Normal',
+                'description' => 'Among species, Normal-type Pokémon tend to be based on a variety of different real-world animals. Normal typically did not pair with other types except Flying, in order to portray standard species of birds.'
+            ],
         ];
 
         Type::insert($types);
