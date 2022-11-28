@@ -38,9 +38,11 @@
             <td><?php echo e($move->name); ?></td>     
             <td><?php echo e($move->description); ?></td>                           
             <td>     
-                  <a href="<?php echo e(route('moves.show',$move->id)); ?>">Show</a>        
+                  <a href="<?php echo e(route('moves.show',$move->id)); ?>">Show</a> 
+                  <?php if(Auth::user()->role=='admin'): ?>       
                   <a href="<?php echo e(route('moves.edit',$move->id)); ?>">Edit</a>
-                  <a href="<?php echo e(route('moves.destroy',$move->id)); ?>">Delete</a>               
+                  <a href="<?php echo e(route('moves.destroy',$move->id)); ?>">Delete</a>  
+                  <?php endif; ?>             
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

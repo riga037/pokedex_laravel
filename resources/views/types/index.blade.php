@@ -39,9 +39,11 @@
             <td>{{ $type->name }}</td>
             <td>{{ $type->description }}</td>                     
             <td>     
-                  <a href="{{ route('types.show',$type->id) }}">Show</a>        
+                  <a href="{{ route('types.show',$type->id) }}">Show</a> 
+                  @if(Auth::user()->role=='admin')       
                   <a href="{{ route('types.edit',$type->id) }}">Edit</a>
-                  <a href="{{ route('types.destroy',$type->id) }}">Delete</a>               
+                  <a href="{{ route('types.destroy',$type->id) }}">Delete</a>    
+                  @endif           
             </td>
         </tr>
         @endforeach

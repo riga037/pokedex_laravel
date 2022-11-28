@@ -38,9 +38,11 @@
             <td><?php echo e($type->name); ?></td>
             <td><?php echo e($type->description); ?></td>                     
             <td>     
-                  <a href="<?php echo e(route('types.show',$type->id)); ?>">Show</a>        
+                  <a href="<?php echo e(route('types.show',$type->id)); ?>">Show</a> 
+                  <?php if(Auth::user()->role=='admin'): ?>       
                   <a href="<?php echo e(route('types.edit',$type->id)); ?>">Edit</a>
-                  <a href="<?php echo e(route('types.destroy',$type->id)); ?>">Delete</a>               
+                  <a href="<?php echo e(route('types.destroy',$type->id)); ?>">Delete</a>    
+                  <?php endif; ?>           
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

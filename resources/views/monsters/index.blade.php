@@ -40,11 +40,13 @@
             <td>{{ $monster->monstername }}</td>
             <td>{{ $monster->category }}</td>
             <td>{{ $monster->description }}</td>                      
-            <td>     
-                <a href="{{ route('monsters.editmoves',$monster->id) }}">Moves</a>  
-                <a href="{{ route('monsters.show',$monster->id) }}">Show</a>        
+            <td>
+                <a href="{{ route('monsters.show',$monster->id) }}">Show</a> 
+                @if(Auth::user()->role=='admin')       
+                <a href="{{ route('monsters.editmoves',$monster->id) }}">Moves</a>       
                 <a href="{{ route('monsters.edit',$monster->id) }}">Edit</a>
-                <a href="{{ route('monsters.destroy',$monster->id) }}">Delete</a>               
+                <a href="{{ route('monsters.destroy',$monster->id) }}">Delete</a>
+                @endif               
             </td>
         </tr>
         @endforeach

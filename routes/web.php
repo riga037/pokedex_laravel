@@ -34,12 +34,6 @@ use App\Http\Controllers\MonsterController;
 
     Route::post('/moves/store', [App\Http\Controllers\MoveController::class, 'store'])->name('moves.store');
 
-    Route::get('/moves/destroy/{move}', [App\Http\Controllers\MoveController::class, 'destroy'])->name('moves.destroy');
-
-    Route::get('/moves/edit/{move}', [App\Http\Controllers\MoveController::class, 'edit'])->name('moves.edit');
-
-    Route::post('/moves/update/{move}', [App\Http\Controllers\MoveController::class, 'update'])->name('moves.update');
-
 
     Route::get('/types', [App\Http\Controllers\TypeController::class, 'index'])->name('types.index');
 
@@ -48,12 +42,6 @@ use App\Http\Controllers\MonsterController;
     Route::get('/types/show/{type}', [App\Http\Controllers\TypeController::class, 'show'])->name('types.show');
     
     Route::post('/types/store', [App\Http\Controllers\TypeController::class, 'store'])->name('types.store');
-    
-    Route::get('/types/destroy/{type}', [App\Http\Controllers\TypeController::class, 'destroy'])->name('types.destroy');
-    
-    Route::get('/types/edit/{type}', [App\Http\Controllers\TypeController::class, 'edit'])->name('types.edit');
-    
-    Route::post('/types/update/{type}', [App\Http\Controllers\TypeController::class, 'update'])->name('types.update');
 
 
     Route::get('/monsters', [App\Http\Controllers\MonsterController::class, 'index'])->name('monsters.index');
@@ -63,21 +51,45 @@ use App\Http\Controllers\MonsterController;
     Route::get('/monsters/show/{monster}', [App\Http\Controllers\MonsterController::class, 'show'])->name('monsters.show');
     
     Route::post('/monsters/store', [App\Http\Controllers\MonsterController::class, 'store'])->name('monsters.store');
-    
-    Route::get('/monsters/destroy/{monster}', [App\Http\Controllers\MonsterController::class, 'destroy'])->name('monsters.destroy');
-    
-    Route::get('/monsters/edit/{monster}', [App\Http\Controllers\MonsterController::class, 'edit'])->name('monsters.edit');
-    
-    Route::post('/monsters/update/{monster}', [App\Http\Controllers\MonsterController::class, 'update'])->name('monsters.update');
-    
-    // Monsters - Moves
-    Route::get('/monsters/{monster}/moves', [App\Http\Controllers\MonsterController::class, 'editMoves'])->name('monsters.editmoves');
 
-    Route::post('/monsters/{monster}/assignmoves', [App\Http\Controllers\MonsterController::class, 'attachMoves'])->name('monsters.assignmoves');
 
-    Route::post('/monsters/{monster}/detachmoves', [App\Http\Controllers\MonsterController::class, 'detachMoves'])->name('monsters.detachmoves');
+    Route::group(['middleware'=>['auth','role:admin']], function() {
+
+        Route::get('/moves/destroy/{move}', [App\Http\Controllers\MoveController::class, 'destroy'])->name('moves.destroy');
+
+        Route::get('/moves/edit/{move}', [App\Http\Controllers\MoveController::class, 'edit'])->name('moves.edit');
+
+        Route::post('/moves/update/{move}', [App\Http\Controllers\MoveController::class, 'update'])->name('moves.update');
+
+
+        Route::get('/types/destroy/{type}', [App\Http\Controllers\TypeController::class, 'destroy'])->name('types.destroy');
+    
+        Route::get('/types/edit/{type}', [App\Http\Controllers\TypeController::class, 'edit'])->name('types.edit');
+    
+        Route::post('/types/update/{type}', [App\Http\Controllers\TypeController::class, 'update'])->name('types.update');
+
+
+        Route::get('/monsters/destroy/{monster}', [App\Http\Controllers\MonsterController::class, 'destroy'])->name('monsters.destroy');
+    
+        Route::get('/monsters/edit/{monster}', [App\Http\Controllers\MonsterController::class, 'edit'])->name('monsters.edit');
+    
+        Route::post('/monsters/update/{monster}', [App\Http\Controllers\MonsterController::class, 'update'])->name('monsters.update');
+
+
+        // Monsters - Moves
+        Route::get('/monsters/{monster}/moves', [App\Http\Controllers\MonsterController::class, 'editMoves'])->name('monsters.editmoves');
+
+        Route::post('/monsters/{monster}/assignmoves', [App\Http\Controllers\MonsterController::class, 'attachMoves'])->name('monsters.assignmoves');
+
+        Route::post('/monsters/{monster}/detachmoves', [App\Http\Controllers\MonsterController::class, 'detachMoves'])->name('monsters.detachmoves');
+
+    });    
 
     });
+
+    
+
+
     
     /*Route::get('/secret', function () {
         return "Estàs autentificat!!!";

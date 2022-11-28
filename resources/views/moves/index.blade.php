@@ -39,9 +39,11 @@
             <td>{{ $move->name }}</td>     
             <td>{{ $move->description }}</td>                           
             <td>     
-                  <a href="{{ route('moves.show',$move->id) }}">Show</a>        
+                  <a href="{{ route('moves.show',$move->id) }}">Show</a> 
+                  @if(Auth::user()->role=='admin')       
                   <a href="{{ route('moves.edit',$move->id) }}">Edit</a>
-                  <a href="{{ route('moves.destroy',$move->id) }}">Delete</a>               
+                  <a href="{{ route('moves.destroy',$move->id) }}">Delete</a>  
+                  @endif             
             </td>
         </tr>
         @endforeach

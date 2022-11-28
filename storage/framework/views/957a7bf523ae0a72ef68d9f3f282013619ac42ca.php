@@ -39,11 +39,13 @@
             <td><?php echo e($monster->monstername); ?></td>
             <td><?php echo e($monster->category); ?></td>
             <td><?php echo e($monster->description); ?></td>                      
-            <td>     
-                <a href="<?php echo e(route('monsters.editmoves',$monster->id)); ?>">Moves</a>  
-                <a href="<?php echo e(route('monsters.show',$monster->id)); ?>">Show</a>        
+            <td>
+                <a href="<?php echo e(route('monsters.show',$monster->id)); ?>">Show</a> 
+                <?php if(Auth::user()->role=='admin'): ?>       
+                <a href="<?php echo e(route('monsters.editmoves',$monster->id)); ?>">Moves</a>       
                 <a href="<?php echo e(route('monsters.edit',$monster->id)); ?>">Edit</a>
-                <a href="<?php echo e(route('monsters.destroy',$monster->id)); ?>">Delete</a>               
+                <a href="<?php echo e(route('monsters.destroy',$monster->id)); ?>">Delete</a>
+                <?php endif; ?>               
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
