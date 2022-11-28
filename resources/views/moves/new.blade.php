@@ -1,24 +1,41 @@
 @extends('plantilla')
 @section('content')
-
-New Move
-<br><br>
-<form method="POST" action="{{ route('moves.store') }}">
-	
-	@csrf
-	<input type="text" name="name" value="{{old('name')}}">
-	<input type="text" name="description" value="{{old('description')}}">
-	<input type="submit" name="Save">
-
-</form>
-
-@if($errors->any())
-
-	<ul>
-		@foreach($errors->all() as $error)
-			<li>{{$error}}</li>
-		@endforeach
-	</ul>
+<div>
+    <a href="{{ route('moves.index') }}">Back</a>
+</div>
+<div>
+    <h2>Add New Move</h2>
+</div>
+    
+   
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
+   
+<div>
+<form action="{{ route('moves.store') }}" method="POST">
+    @csrf
+  
+    <div>
+        <strong>Move Name:</strong>
+        <input type="text" name="name" value="{{ old('name') }}">
+    </div>
 
+    <div>           
+        <strong>Description:</strong>
+        <input type="text" name="description" value="{{ old('description') }}">
+    </div>
+ 
+    <div>
+        <input type="submit" value="Save">
+    </div>
+    
+</form>
+</div>
 @endsection

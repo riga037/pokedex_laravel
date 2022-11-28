@@ -1,7 +1,7 @@
   
 <?php $__env->startSection('content'); ?>
 <div class="float-right">
-    <a href="<?php echo e(route('monsters.index')); ?>">BAck</a>
+    <a href="<?php echo e(route('monsters.index')); ?>">Back</a>
 </div>
 <h2>Monster Data</h2>
               

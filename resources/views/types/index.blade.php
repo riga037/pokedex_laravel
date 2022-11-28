@@ -5,7 +5,7 @@
         <h2>Types</h2>
     </div>
     <div>
-        <a href="{{ route('types.create') }}">New Planet</a>
+        <a href="{{ route('types.create') }}">New Type</a>
     </div>
         
    

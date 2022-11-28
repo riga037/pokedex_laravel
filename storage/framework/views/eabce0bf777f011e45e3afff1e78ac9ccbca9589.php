@@ -3,7 +3,6 @@
 <div>
     <a href="<?php echo e(route('monsters.index')); ?>">Back</a>
 </div>
-
 <div>    
     <h2>Moves of <?php echo e($monster->monstername); ?></h2>
 </div>
@@ -37,7 +36,7 @@
 	    			
 	    	</select>
 	    	</div>
-	    	<input type="submit" value="Delete Moves" class="btn btn-dark">
+	    	<input type="submit" value="Discard Moves" class="btn btn-dark">
     	</form>
 
     </div>
@@ -45,7 +44,7 @@
     	<form method='POST' action="<?php echo e(route('monsters.assignmoves',$monster->id)); ?>">
              <?php echo csrf_field(); ?>
       		<div class="form-group">
-    		<label>Llista Poders</label>
+    		<label>Moves List</label>
     		<select multiple class="form-control" size="20" name="moves[]">
           
     		  <?php $__currentLoopData = $moves; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $move): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> {        

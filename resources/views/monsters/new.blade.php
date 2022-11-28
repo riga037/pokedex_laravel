@@ -2,7 +2,7 @@
   
 @section('content')
 <div>
-    <a href="{{ route('monsters.index') }}"> Tornar</a>
+    <a href="{{ route('monsters.index') }}">Back</a>
 </div>
 <div>
     <h2>Add New Monster</h2>

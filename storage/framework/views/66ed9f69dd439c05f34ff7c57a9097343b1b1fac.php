@@ -3,7 +3,7 @@
         <h2>Types</h2>
     </div>
     <div>
-        <a href="<?php echo e(route('types.create')); ?>">New Planet</a>
+        <a href="<?php echo e(route('types.create')); ?>">New Type</a>
     </div>
         
    

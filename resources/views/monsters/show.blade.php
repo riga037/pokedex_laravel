@@ -2,7 +2,7 @@
   
 @section('content')
 <div class="float-right">
-    <a href="{{ route('monsters.index') }}">BAck</a>
+    <a href="{{ route('monsters.index') }}">Back</a>
 </div>
 <h2>Monster Data</h2>
               

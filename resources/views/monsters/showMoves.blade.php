@@ -4,7 +4,6 @@
 <div>
     <a href="{{ route('monsters.index') }}">Back</a>
 </div>
-
 <div>    
     <h2>Moves of {{ $monster->monstername }}</h2>
 </div>
@@ -38,7 +37,7 @@
 	    			
 	    	</select>
 	    	</div>
-	    	<input type="submit" value="Delete Moves" class="btn btn-dark">
+	    	<input type="submit" value="Discard Moves" class="btn btn-dark">
     	</form>
 
     </div>
@@ -46,7 +45,7 @@
     	<form method='POST' action="{{ route('monsters.assignmoves',$monster->id) }}">
              @csrf
       		<div class="form-group">
-    		<label>Llista Poders</label>
+    		<label>Moves List</label>
     		<select multiple class="form-control" size="20" name="moves[]">
           
     		  @foreach($moves as $move) {        

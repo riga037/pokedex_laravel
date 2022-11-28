@@ -1,7 +1,7 @@
   
 <?php $__env->startSection('content'); ?>
 <div>
-    <a href="<?php echo e(route('monsters.index')); ?>"> Tornar</a>
+    <a href="<?php echo e(route('monsters.index')); ?>">Back</a>
 </div>
 <div>
     <h2>Add New Monster</h2>
