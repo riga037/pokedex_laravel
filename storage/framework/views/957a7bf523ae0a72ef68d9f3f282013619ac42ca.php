@@ -58,7 +58,7 @@
         <?php $__currentLoopData = $monsters; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $monster): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col">
             <div class="card h-100">
-            <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/<?php echo e($monster->id); ?>.gif" class="card-img-top" style="width:50%; margin:auto">
+            <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/<?php echo e($monster->id); ?>.gif" class="card-img-top" style="margin:auto">
             <div class="card-body">
                 <h5 class="card-title">#<?php echo e($monster->id); ?> <?php echo e($monster->monstername); ?></h5>
                 <p class="card-text"><?php echo e($monster->category); ?></p>
