@@ -50,7 +50,7 @@ class MonsterController extends Controller
         $request->validate([
             'monstername' => 'required | max:25 |unique:monsters',
             'category' => 'required | max:75', 
-            'description' => 'required | max:75',
+            'description' => 'required | max:500',
             'type_id' => 'required|exists:types,id'           
         ]);
     
@@ -99,9 +99,9 @@ class MonsterController extends Controller
     {
         //
         $request->validate([
-            'monstername' => 'required | max:25 |unique:monsters',
+            'monstername' => 'required | max:25',
             'category' => 'required | max:75', 
-            'description' => 'required | max:75',
+            'description' => 'required | max:500',
             'type_id' => 'required|exists:types,id'           
         ]);
 

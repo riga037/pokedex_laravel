@@ -58,12 +58,36 @@
         <?php $__currentLoopData = $monsters; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $monster): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="col">
             <div class="card h-100">
-            <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/<?php echo e($monster->id); ?>.gif" class="card-img-top" style="margin:auto; padding: 1em; height:50%; width:100%">
-            <div class="card-body">
-                <h5 class="card-title">#<?php echo e($monster->id); ?> <?php echo e($monster->monstername); ?></h5>
-                <p class="card-text"><?php echo e($monster->category); ?></p>
-                <p class="card-text"><?php echo e($monster->description); ?></p>
-            </div>
+                <?php if($monster->type_id==1): ?>
+                <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/<?php echo e($monster->id); ?>.gif" class="card-img-top" style="margin:auto; padding: 2em; height:50%; width:100%; background: rgb(228,255,177);background: radial-gradient(circle, rgba(228,255,177,1) 0%, rgba(7,255,0,1) 96%);">
+                <?php elseif($monster->type_id==2): ?>
+                <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/<?php echo e($monster->id); ?>.gif" class="card-img-top" style="margin:auto; padding: 2em; height:50%; width:100%; background:rgb(255,177,177);background: radial-gradient(circle, rgba(255,177,177,1) 0%, rgba(255,0,0,1) 96%);">
+                <?php else: ?>
+                <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/<?php echo e($monster->id); ?>.gif" class="card-img-top" style="margin:auto; padding: 2em; height:50%; width:100%; background:rgb(177,207,255); background:radial-gradient(circle, rgba(177,207,255,1) 0%, rgba(99,159,231,1) 100%);">
+                <?php endif; ?>
+                <div class="card-body">
+                    <h5 class="card-title"><strong>#<?php echo e($monster->id); ?> <?php echo e($monster->monstername); ?></strong></h5>
+                    <p class="card-text"><strong>Type:</strong> <?php echo e($monster->type->name); ?></p>
+                    <p class="card-text"><strong>Category:</strong> <?php echo e($monster->category); ?></p>
+                    <h6><strong>Description:</strong></h6>
+                    <p class="card-text"><?php echo e($monster->description); ?></p>
+                    <h6><strong>Moves:</strong></h6>
+                    <p class="card-text">
+                    <ul>
+                        <?php $__currentLoopData = $monster->moves; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $move): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li>
+                            <?php echo e($move->name); ?> 
+                            </li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
+                    </p>
+                    <?php if(Auth::user()->role=='admin'): ?> 
+                    <h6><strong>Options:</strong></h6>
+                    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('monsters.editmoves',$monster->id)); ?>'">Moves</button>
+                    <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('monsters.edit',$monster->id)); ?>'">Edit</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='<?php echo e(route('monsters.destroy',$monster->id)); ?>'">Delete</button>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

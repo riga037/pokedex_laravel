@@ -35,7 +35,7 @@
         
     <div>           
         <strong>Description:</strong>
-        <input type="text" name="description" value="{{ old('description') }}">
+        <input type="text" name="description" value="{{ old('description', $monster->description) }}">
     </div>    
 
     <div>           

@@ -19,7 +19,7 @@
 <div>
 <strong>Monsters learning this move:</strong>
 <ul>
-   @foreach($move->monsters as $mosnter)
+   @foreach($move->monsters as $monster)
      	<li>
             {{ $monster->monstername }} 
             </li>
