@@ -1,7 +1,8 @@
   
 <?php $__env->startSection('content'); ?>
-<a href="<?php echo e(route('types.index')); ?>">Back</a>
-
+<br>
+<button type="button" class="btn btn-link" onclick="location.href='<?php echo e(route('types.index')); ?>'">Back</button>
+    <br>
 <h2>Type Data</h2>
 
     <div>

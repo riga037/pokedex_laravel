@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
-<a href="<?php echo e(route('moves.index')); ?>">Back</a>
-
+<br>
+<button type="button" class="btn btn-link" onclick="location.href='<?php echo e(route('moves.index')); ?>'">Back</button>
+<br>
 <h2>Move</h2>
        
 <div>

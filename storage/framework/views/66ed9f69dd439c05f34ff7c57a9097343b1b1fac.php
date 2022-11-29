@@ -3,7 +3,7 @@
         <h2>Types</h2>
     </div>
     <div>
-        <a href="<?php echo e(route('types.create')); ?>">New Type</a>
+        <button type="button" class="btn btn-info" onclick="location.href='<?php echo e(route('types.create')); ?>'">New Type</a>
     </div>
         
    
@@ -37,12 +37,14 @@
             <td><?php echo e($type->id); ?></td>
             <td><?php echo e($type->name); ?></td>
             <td><?php echo e($type->description); ?></td>                     
-            <td>     
-                  <a href="<?php echo e(route('types.show',$type->id)); ?>">Show</a> 
+            <td>  
+                <div class="d-flex">   
+                  <button type="button" class="btn btn-primary m-2" onclick="location.href='<?php echo e(route('types.show',$type->id)); ?>'">Show</button> 
                   <?php if(Auth::user()->role=='admin'): ?>       
-                  <a href="<?php echo e(route('types.edit',$type->id)); ?>">Edit</a>
-                  <a href="<?php echo e(route('types.destroy',$type->id)); ?>">Delete</a>    
-                  <?php endif; ?>           
+                  <button type="button" class="btn btn-success m-2" onclick="location.href='<?php echo e(route('types.edit',$type->id)); ?>'">Edit</button>
+                  <button type="button" class="btn btn-danger m-2" onclick="location.href='<?php echo e(route('types.destroy',$type->id)); ?>'">Delete</button>    
+                  <?php endif; ?>  
+                </div>         
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

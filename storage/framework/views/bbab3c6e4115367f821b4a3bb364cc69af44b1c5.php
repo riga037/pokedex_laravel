@@ -3,7 +3,7 @@
         <h2>Moves</h2>
     </div>
     <div>
-        <a href="<?php echo e(route('moves.create')); ?>">New Move</a>
+        <button type="button" class="btn btn-info" onclick="location.href='<?php echo e(route('moves.create')); ?>'">New Move</a>
     </div>
         
    
@@ -38,16 +38,15 @@
             <td><?php echo e($move->name); ?></td>     
             <td><?php echo e($move->description); ?></td>                           
             <td>     
-                  <a href="<?php echo e(route('moves.show',$move->id)); ?>">Show</a> 
+                <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('moves.show',$move->id)); ?>'">Show</button> 
                   <?php if(Auth::user()->role=='admin'): ?>       
-                  <a href="<?php echo e(route('moves.edit',$move->id)); ?>">Edit</a>
-                  <a href="<?php echo e(route('moves.destroy',$move->id)); ?>">Delete</a>  
+                  <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('moves.edit',$move->id)); ?>'">Edit</button>
+                  <button type="button" class="btn btn-danger" onclick="location.href='<?php echo e(route('moves.destroy',$move->id)); ?>">Delete</button>  
                   <?php endif; ?>             
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </table>
-  
     <?php echo e($moves->links('pagination::bootstrap-4')); ?>
 
       
