@@ -6,6 +6,7 @@
         <a href="<?php echo e(route('monsters.create')); ?>">New Monster</a>
     </div>
         
+    <br>
    
     <?php if(session('success')): ?>
         <div class="alert alert-success">
@@ -21,7 +22,7 @@
     <?php endif; ?>
 
        
-    <table class="table">
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -51,6 +52,25 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </table>
   
+    <?php echo e($monsters->links('pagination::bootstrap-4')); ?> -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php $__currentLoopData = $monsters; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $monster): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="col">
+            <div class="card h-100">
+            <img src="" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">#<?php echo e($monster->id); ?> <?php echo e($monster->monstername); ?></h5>
+                <p class="card-text"><?php echo e($monster->category); ?></p>
+                <p class="card-text"><?php echo e($monster->description); ?></p>
+            </div>
+            </div>
+        </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+
+    <br>
+
     <?php echo e($monsters->links('pagination::bootstrap-4')); ?>
 
       

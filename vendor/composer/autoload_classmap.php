@@ -29,6 +29,8 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Middleware\\isAdminMiddleware' => $baseDir . '/app/Http/Middleware/isAdminMiddleware.php',
+    'App\\Http\\Middleware\\roleMiddleware' => $baseDir . '/app/Http/Middleware/roleMiddleware.php',
     'App\\Models\\Monster' => $baseDir . '/app/Models/Monster.php',
     'App\\Models\\Move' => $baseDir . '/app/Models/Move.php',
     'App\\Models\\Type' => $baseDir . '/app/Models/Type.php',

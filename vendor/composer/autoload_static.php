@@ -527,6 +527,8 @@ class ComposerStaticInit79067329d9144927f1e57928b0c71b47
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Middleware\\isAdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/isAdminMiddleware.php',
+        'App\\Http\\Middleware\\roleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/roleMiddleware.php',
         'App\\Models\\Monster' => __DIR__ . '/../..' . '/app/Models/Monster.php',
         'App\\Models\\Move' => __DIR__ . '/../..' . '/app/Models/Move.php',
         'App\\Models\\Type' => __DIR__ . '/../..' . '/app/Models/Type.php',

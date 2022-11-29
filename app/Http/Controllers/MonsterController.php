@@ -19,7 +19,7 @@ class MonsterController extends Controller
         // Carreguem llista monsteris i cada
         // monsteri amb l'objecte typea associat
         // per evitar problema N+1 
-        $monsters = Monster::with('type')->paginate(5);
+        $monsters = Monster::with('type')->paginate(3);
     
         return view('monsters.index',compact('monsters'));
            

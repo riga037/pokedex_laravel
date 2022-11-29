@@ -8,6 +8,7 @@
         <a href="{{ route('monsters.create') }}">New Monster</a>
     </div>
         
+    <br>
    
     @if (session('success'))
         <div class="alert alert-success">
@@ -22,7 +23,7 @@
     @endif
 
        
-    <table class="table">
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -52,6 +53,25 @@
         @endforeach
     </table>
   
+    {{ $monsters->links('pagination::bootstrap-4') }} -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach ($monsters as $monster)
+        <div class="col">
+            <div class="card h-100">
+            <img src="" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">#{{ $monster->id }} {{ $monster->monstername }}</h5>
+                <p class="card-text">{{ $monster->category }}</p>
+                <p class="card-text">{{ $monster->description }}</p>
+            </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <br>
+
     {{ $monsters->links('pagination::bootstrap-4') }}
       
 @endsection
