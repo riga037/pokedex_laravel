@@ -59,7 +59,7 @@
         @foreach ($monsters as $monster)
         <div class="col">
             <div class="card h-100">
-            <img src="" class="card-img-top">
+            <img src="https://raw.githubusercontent.com/riga037/pokedex_laravel/main/img/{{ $monster->id }}.gif" class="card-img-top" style="width:50%; margin:auto">
             <div class="card-body">
                 <h5 class="card-title">#{{ $monster->id }} {{ $monster->monstername }}</h5>
                 <p class="card-text">{{ $monster->category }}</p>
