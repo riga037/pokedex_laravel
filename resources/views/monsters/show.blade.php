@@ -2,7 +2,7 @@
   
 @section('content')
 <div class="float-right">
-    <a href="{{ route('monsters.index') }}">Back</a>
+    <button type="button" class="btn btn-link" onclick="location.href='{{ route('monsters.index') }}'">Back</button>
 </div>
 <h2>Monster Data</h2>
               

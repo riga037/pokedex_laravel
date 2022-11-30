@@ -5,7 +5,7 @@
         <h2>Monsters</h2>
     </div>
     <div>
-        <a href="{{ route('monsters.create') }}">New Monster</a>
+        <button type="button" class="btn btn-info" onclick="location.href='{{ route('monsters.create') }}'">New Monster</button>
     </div>
         
     <br>
