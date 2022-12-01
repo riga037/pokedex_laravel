@@ -1,7 +1,7 @@
 @extends('plantilla')
   
 @section('content')
-<a href="{{ route('types.index') }}">Back</a>
+<button type="button" class="btn btn-link" onclick="location.href='{{ route('types.index') }}'">Back</a>
 
 <h2>Type Data</h2>
 

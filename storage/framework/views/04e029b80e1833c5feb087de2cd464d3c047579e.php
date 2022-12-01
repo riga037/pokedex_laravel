@@ -5,7 +5,7 @@
         <h2>Moves</h2>
     </div>
     <div>
-        <a href="<?php echo e(route('moves.create')); ?>">New Move</a>
+        <button type="button" class="btn btn-info" onclick="location.href='<?php echo e(route('moves.create')); ?>'">New Move</a>
     </div>
         
    

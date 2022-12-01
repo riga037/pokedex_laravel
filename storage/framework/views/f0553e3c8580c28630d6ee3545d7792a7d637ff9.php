@@ -2,7 +2,7 @@
   
 <?php $__env->startSection('content'); ?>
 <div>
-    <a href="<?php echo e(route('monsters.index')); ?>">Back</a>
+    <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('monsters.index')); ?>'">Back</a>
 </div>
 <div>
     <h2>Add New Monster</h2>

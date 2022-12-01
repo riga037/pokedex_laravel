@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('content')
 <div>
-    <a href="{{ route('types.index') }}">Back</a>
+    <button type="button" class="btn btn-warning" onclick="location.href='{{ route('types.index') }}'">Back</a>
 </div>
 <div>
     <h2>Add New Type</h2>
@@ -26,7 +26,7 @@
         <strong>Type Name:</strong>
         <input type="text" name="name" value="{{ old('name') }}">
     </div>
-
+    
     <div>           
         <strong>Description:</strong>
         <input type="text" name="description" value="{{ old('description') }}">

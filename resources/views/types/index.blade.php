@@ -5,7 +5,7 @@
         <h2>Types</h2>
     </div>
     <div>
-        <a href="{{ route('types.create') }}">New Type</a>
+        <button type="button" class="btn btn-info" onclick="location.href='{{ route('types.create') }}'">New Type</a>
     </div>
         
    
