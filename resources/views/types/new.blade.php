@@ -1,8 +1,10 @@
 @extends('plantilla')
 @section('content')
+<br>
 <div>
     <button type="button" class="btn btn-warning" onclick="location.href='{{ route('types.index') }}'">Back</a>
 </div>
+<br>
 <div>
     <h2>Add New Type</h2>
 </div>

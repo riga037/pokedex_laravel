@@ -1,9 +1,11 @@
 @extends('plantilla')
   
 @section('content')
+<br>
 <div class="float-right">
     <button type="button" class="btn btn-link" onclick="location.href='{{ route('monsters.index') }}'">Back</button>
 </div>
+<br>
 <h2>Monster Data</h2>
               
 <div>

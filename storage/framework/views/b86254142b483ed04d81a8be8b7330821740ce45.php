@@ -8,9 +8,15 @@
    <!-- Scripts -->
    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
    
+   <style>
+    a:hover {
+  color: red;
+}
+
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                 <?php echo e(config('app.name', 'Pokédex App')); ?>
@@ -24,10 +30,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                 <div>
-                    <a href="<?php echo e(url('/')); ?>">Home</a>
-                    <a href="<?php echo e(url('/types')); ?>">Types</a>
-                    <a href="<?php echo e(url('/moves')); ?>">Moves</a>
-                    <a href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
+                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>">Home</a>
+                    <a class="navbar-brand" href="<?php echo e(url('/types')); ?>">Types</a>
+                    <a class="navbar-brand" href="<?php echo e(url('/moves')); ?>">Moves</a>
+                    <a class="navbar-brand" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
                 </div>
                 </ul>
 

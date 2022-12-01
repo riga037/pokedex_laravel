@@ -1,8 +1,9 @@
 @extends('plantilla')
 
 @section('content')
-<<button type="button" class="btn btn-link" onclick="location.href='{{ route('moves.index') }}'">Back</a>
-
+<br>
+<button type="button" class="btn btn-link" onclick="location.href='{{ route('moves.index') }}'">Back</a>
+<br>
 <h2>Move</h2>
        
 <div>

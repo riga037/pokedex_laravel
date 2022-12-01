@@ -1,6 +1,7 @@
 @extends('plantilla')
   
 @section('content')
+
 <div>
     <button type="button" class="btn btn-warning" onclick="location.href='{{ route('monsters.index') }}'">Back</a>
 </div>
@@ -27,17 +28,17 @@
         <strong>Monster Name:</strong>
         <input type="text" name="monstername" value="{{ old('monstername') }}">
     </div>
-        
+    <br>
     <div>           
         <strong>Category:</strong>
         <input type="text" name="category" value="{{ old('category') }}">
     </div>
-
+    <br>
     <div>           
         <strong>Description:</strong>
-        <input type="text" name="description" value="{{ old('description') }}">
+        <input type="textarea" name="description" value="{{ old('description') }}">
     </div>
-        
+    <br>
     <div>           
         <strong>Type:</strong>
         <select name="type_id">
@@ -48,7 +49,8 @@
             @endforeach            
         </select>
     </div>
-        
+    <br>
+    <br>
         
     <div>
         <input type="submit" value="Save">

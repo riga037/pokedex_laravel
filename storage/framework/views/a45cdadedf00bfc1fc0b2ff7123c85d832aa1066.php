@@ -1,8 +1,10 @@
 
 <?php $__env->startSection('content'); ?>
+<br>
 <div>
     <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('types.index')); ?>'">Back</a>
 </div>
+<br>
 <div>
     <h2>Add New Type</h2>
 </div>
@@ -26,7 +28,7 @@
         <strong>Type Name:</strong>
         <input type="text" name="name" value="<?php echo e(old('name')); ?>">
     </div>
-
+    
     <div>           
         <strong>Description:</strong>
         <input type="text" name="description" value="<?php echo e(old('description')); ?>">

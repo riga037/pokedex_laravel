@@ -1,6 +1,7 @@
 
   
 <?php $__env->startSection('content'); ?>
+
 <div>
     <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('monsters.index')); ?>'">Back</a>
 </div>
@@ -27,17 +28,17 @@
         <strong>Monster Name:</strong>
         <input type="text" name="monstername" value="<?php echo e(old('monstername')); ?>">
     </div>
-        
+    <br>
     <div>           
         <strong>Category:</strong>
         <input type="text" name="category" value="<?php echo e(old('category')); ?>">
     </div>
-
+    <br>
     <div>           
         <strong>Description:</strong>
-        <input type="text" name="description" value="<?php echo e(old('description')); ?>">
+        <input type="textarea" name="description" value="<?php echo e(old('description')); ?>">
     </div>
-        
+    <br>
     <div>           
         <strong>Type:</strong>
         <select name="type_id">
@@ -49,7 +50,8 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>            
         </select>
     </div>
-        
+    <br>
+    <br>
         
     <div>
         <input type="submit" value="Save">

@@ -10,7 +10,7 @@
    
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Pokédex App') }}
@@ -23,10 +23,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                 <div>
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="{{ url('/types') }}">Types</a>
-                    <a href="{{ url('/moves') }}">Moves</a>
-                    <a href="{{ url('/monsters') }}">Monsters</a>         
+                    <a class="navbar-brand" href="{{ url('/') }}">Home</a>
+                    <a class="navbar-brand" href="{{ url('/types') }}">Types</a>
+                    <a class="navbar-brand" href="{{ url('/moves') }}">Moves</a>
+                    <a class="navbar-brand" href="{{ url('/monsters') }}">Monsters</a>         
                 </div>
                 </ul>
 
