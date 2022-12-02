@@ -40,10 +40,10 @@
             <td><?php echo e($type->name); ?></td>
             <td><?php echo e($type->description); ?></td>                     
             <td>     
-                  <a href="<?php echo e(route('types.show',$type->id)); ?>">Show</a> 
+                  <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('types.show',$type->id)); ?>'">Show</button> 
                   <?php if(Auth::user()->role=='admin'): ?>       
-                  <a href="<?php echo e(route('types.edit',$type->id)); ?>">Edit</a>
-                  <a href="<?php echo e(route('types.destroy',$type->id)); ?>">Delete</a>    
+                  <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('types.edit',$type->id)); ?>'">Edit</button>
+                  <button type="button" class="btn btn-danger" onclick="location.href='<?php echo e(route('types.destroy',$type->id)); ?>'">Delete</button>    
                   <?php endif; ?>           
             </td>
         </tr>

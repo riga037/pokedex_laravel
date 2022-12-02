@@ -2,7 +2,7 @@
 
 @section('content')
 <br>
-<button type="button" class="btn btn-link" onclick="location.href='{{ route('moves.index') }}'">Back</a>
+<button type="button" class="btn btn-link" onclick="location.href='{{ route('moves.index') }}'">Back</button>
 <br>
 <h2>Move</h2>
        

@@ -1,9 +1,11 @@
 
    
 <?php $__env->startSection('content'); ?>
+<br>
 <div>
-    <a href="<?php echo e(route('monsters.index')); ?>">Back</a>
+  <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('monsters.index')); ?>'">Back</button>
 </div>
+<br>
 <div>    
     <h2>Moves of <?php echo e($monster->monstername); ?></h2>
 </div>

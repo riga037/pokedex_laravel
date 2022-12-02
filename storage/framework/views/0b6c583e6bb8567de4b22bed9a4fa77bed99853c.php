@@ -1,12 +1,11 @@
 
+  
 <?php $__env->startSection('content'); ?>
-<br>
 <div>
-    <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('types.index')); ?>'">Back</button>
+    <a href="<?php echo e(route('moves.index')); ?>">Back</a>
 </div>
-<br>
 <div>
-    <h2>Add New Type</h2>
+    <h2>Update Move</h2>
 </div>
     
    
@@ -21,19 +20,19 @@
 <?php endif; ?>
    
 <div>
-<form action="<?php echo e(route('types.store')); ?>" method="POST">
+<form action="<?php echo e(route('moves.update',$move)); ?>" method="POST">
     <?php echo csrf_field(); ?>
   
     <div>
-        <strong>Type Name:</strong>
-        <input type="text" name="name" value="<?php echo e(old('name')); ?>">
-    </div>
-    
-    <div>           
+        <strong>Name:</strong>
+        <input type="text" name="name" value="<?php echo e(old('name', $move->name)); ?>">
+    </div>  
+
+    <div>
         <strong>Description:</strong>
-        <input type="text" name="description" value="<?php echo e(old('description')); ?>">
-    </div>
- 
+        <input type="text" name="description" value="<?php echo e(old('description', $move->description)); ?>">
+    </div>     
+        
     <div>
         <input type="submit" value="Save">
     </div>
@@ -41,4 +40,4 @@
 </form>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('plantilla', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Usuario\Desktop\DAW\M7\pokedex_laravel\resources\views/types/new.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('plantilla', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Usuario\Desktop\DAW\M7\pokedex_laravel\resources\views/moves/update.blade.php ENDPATH**/ ?>

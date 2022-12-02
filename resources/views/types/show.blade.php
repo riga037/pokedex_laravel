@@ -2,7 +2,7 @@
   
 @section('content')
 <br>
-<button type="button" class="btn btn-link" onclick="location.href='{{ route('types.index') }}'">Back</a>
+<button type="button" class="btn btn-link" onclick="location.href='{{ route('types.index') }}'">Back</button>
     <br>
 <h2>Type Data</h2>
 

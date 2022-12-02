@@ -39,16 +39,15 @@
             <td>{{ $move->name }}</td>     
             <td>{{ $move->description }}</td>                           
             <td>     
-                  <a href="{{ route('moves.show',$move->id) }}">Show</a> 
+                <button type="button" class="btn btn-primary" onclick="location.href='{{ route('moves.show',$move->id) }}">Show</button> 
                   @if(Auth::user()->role=='admin')       
-                  <a href="{{ route('moves.edit',$move->id) }}">Edit</a>
-                  <a href="{{ route('moves.destroy',$move->id) }}">Delete</a>  
+                  <button type="button" class="btn btn-success" onclick="location.href='{{ route('moves.edit',$move->id) }}'">Edit</button>
+                  <button type="button" class="btn btn-danger" onclick="location.href='{{ route('moves.destroy',$move->id) }}">Delete</button>  
                   @endif             
             </td>
         </tr>
         @endforeach
     </table>
-  
     {{ $moves->links('pagination::bootstrap-4') }}
       
 @endsection

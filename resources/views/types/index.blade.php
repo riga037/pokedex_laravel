@@ -39,10 +39,10 @@
             <td>{{ $type->name }}</td>
             <td>{{ $type->description }}</td>                     
             <td>     
-                  <a href="{{ route('types.show',$type->id) }}">Show</a> 
+                  <button type="button" class="btn btn-primary" onclick="location.href='{{ route('types.show',$type->id) }}'">Show</button> 
                   @if(Auth::user()->role=='admin')       
-                  <a href="{{ route('types.edit',$type->id) }}">Edit</a>
-                  <a href="{{ route('types.destroy',$type->id) }}">Delete</a>    
+                  <button type="button" class="btn btn-success" onclick="location.href='{{ route('types.edit',$type->id) }}'">Edit</button>
+                  <button type="button" class="btn btn-danger" onclick="location.href='{{ route('types.destroy',$type->id) }}'">Delete</button>    
                   @endif           
             </td>
         </tr>

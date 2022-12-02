@@ -7,12 +7,10 @@
   <!-- CSS only -->
    <!-- Scripts -->
    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
-   
    <style>
-    a:hover {
-  color: red;
-}
-
+    #nav:hover {
+        background-color: #D70040;
+    }
     </style>
 </head>
 <body>
@@ -30,10 +28,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                 <div>
-                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>">Home</a>
-                    <a class="navbar-brand" href="<?php echo e(url('/types')); ?>">Types</a>
-                    <a class="navbar-brand" href="<?php echo e(url('/moves')); ?>">Moves</a>
-                    <a class="navbar-brand" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
+                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/')); ?>">Home</a>
+                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/types')); ?>">Types</a>
+                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/moves')); ?>">Moves</a>
+                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
                 </div>
                 </ul>
 

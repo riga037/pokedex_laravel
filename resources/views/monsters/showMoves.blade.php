@@ -1,9 +1,11 @@
 @extends('plantilla')
    
 @section('content')
+<br>
 <div>
-    <a href="{{ route('monsters.index') }}">Back</a>
+  <button type="button" class="btn btn-warning" onclick="location.href='{{ route('monsters.index') }}'">Back</button>
 </div>
+<br>
 <div>    
     <h2>Moves of {{ $monster->monstername }}</h2>
 </div>

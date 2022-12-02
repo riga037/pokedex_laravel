@@ -7,7 +7,11 @@
   <!-- CSS only -->
    <!-- Scripts -->
    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-   
+   <style>
+    #nav:hover {
+        background-color: #D70040;
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,10 +27,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                 <div>
-                    <a class="navbar-brand" href="{{ url('/') }}">Home</a>
-                    <a class="navbar-brand" href="{{ url('/types') }}">Types</a>
-                    <a class="navbar-brand" href="{{ url('/moves') }}">Moves</a>
-                    <a class="navbar-brand" href="{{ url('/monsters') }}">Monsters</a>         
+                    <a id="nav" class="navbar-brand" href="{{ url('/') }}">Home</a>
+                    <a id="nav" class="navbar-brand" href="{{ url('/types') }}">Types</a>
+                    <a id="nav" class="navbar-brand" href="{{ url('/moves') }}">Moves</a>
+                    <a id="nav" class="navbar-brand" href="{{ url('/monsters') }}">Monsters</a>         
                 </div>
                 </ul>
 
