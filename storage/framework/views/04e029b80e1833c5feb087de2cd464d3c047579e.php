@@ -40,7 +40,7 @@
             <td><?php echo e($move->name); ?></td>     
             <td><?php echo e($move->description); ?></td>                           
             <td>     
-                <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('moves.show',$move->id)); ?>">Show</button> 
+                <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('moves.show',$move->id)); ?>'">Show</button> 
                   <?php if(Auth::user()->role=='admin'): ?>       
                   <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('moves.edit',$move->id)); ?>'">Edit</button>
                   <button type="button" class="btn btn-danger" onclick="location.href='<?php echo e(route('moves.destroy',$move->id)); ?>">Delete</button>  

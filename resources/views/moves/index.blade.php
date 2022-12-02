@@ -39,7 +39,7 @@
             <td>{{ $move->name }}</td>     
             <td>{{ $move->description }}</td>                           
             <td>     
-                <button type="button" class="btn btn-primary" onclick="location.href='{{ route('moves.show',$move->id) }}">Show</button> 
+                <button type="button" class="btn btn-primary" onclick="location.href='{{ route('moves.show',$move->id) }}'">Show</button> 
                   @if(Auth::user()->role=='admin')       
                   <button type="button" class="btn btn-success" onclick="location.href='{{ route('moves.edit',$move->id) }}'">Edit</button>
                   <button type="button" class="btn btn-danger" onclick="location.href='{{ route('moves.destroy',$move->id) }}">Delete</button>  
