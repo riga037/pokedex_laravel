@@ -39,12 +39,14 @@
             <td><?php echo e($type->id); ?></td>
             <td><?php echo e($type->name); ?></td>
             <td><?php echo e($type->description); ?></td>                     
-            <td>     
-                  <button type="button" class="btn btn-primary" onclick="location.href='<?php echo e(route('types.show',$type->id)); ?>'">Show</button> 
+            <td>  
+                <div class="d-flex">   
+                  <button type="button" class="btn btn-primary m-2" onclick="location.href='<?php echo e(route('types.show',$type->id)); ?>'">Show</button> 
                   <?php if(Auth::user()->role=='admin'): ?>       
-                  <button type="button" class="btn btn-success" onclick="location.href='<?php echo e(route('types.edit',$type->id)); ?>'">Edit</button>
-                  <button type="button" class="btn btn-danger" onclick="location.href='<?php echo e(route('types.destroy',$type->id)); ?>'">Delete</button>    
-                  <?php endif; ?>           
+                  <button type="button" class="btn btn-success m-2" onclick="location.href='<?php echo e(route('types.edit',$type->id)); ?>'">Edit</button>
+                  <button type="button" class="btn btn-danger m-2" onclick="location.href='<?php echo e(route('types.destroy',$type->id)); ?>'">Delete</button>    
+                  <?php endif; ?>  
+                </div>         
             </td>
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

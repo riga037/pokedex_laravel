@@ -8,13 +8,19 @@
    <!-- Scripts -->
    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
    <style>
+
+    #nav {
+        transition: all .3s;
+    }
+    
     #nav:hover {
         background-color: #D70040;
+        border-radius: 5px;
     }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
         <div class="container">
             <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                 <?php echo e(config('app.name', 'Pokédex App')); ?>
@@ -26,12 +32,12 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto p-3">
                 <div>
-                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/')); ?>">Home</a>
-                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/types')); ?>">Types</a>
-                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/moves')); ?>">Moves</a>
-                    <a id="nav" class="navbar-brand" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/')); ?>">Home</a>
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/types')); ?>">Types</a>
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/moves')); ?>">Moves</a>
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
                 </div>
                 </ul>
 

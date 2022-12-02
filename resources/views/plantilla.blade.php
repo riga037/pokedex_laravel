@@ -8,13 +8,19 @@
    <!-- Scripts -->
    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
    <style>
+
+    #nav {
+        transition: all .3s;
+    }
+    
     #nav:hover {
         background-color: #D70040;
+        border-radius: 5px;
     }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Pokédex App') }}
@@ -25,12 +31,12 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto p-3">
                 <div>
-                    <a id="nav" class="navbar-brand" href="{{ url('/') }}">Home</a>
-                    <a id="nav" class="navbar-brand" href="{{ url('/types') }}">Types</a>
-                    <a id="nav" class="navbar-brand" href="{{ url('/moves') }}">Moves</a>
-                    <a id="nav" class="navbar-brand" href="{{ url('/monsters') }}">Monsters</a>         
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/') }}">Home</a>
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/types') }}">Types</a>
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/moves') }}">Moves</a>
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/monsters') }}">Monsters</a>         
                 </div>
                 </ul>
 

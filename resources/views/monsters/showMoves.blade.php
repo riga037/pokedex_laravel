@@ -39,6 +39,7 @@
 	    			
 	    	</select>
 	    	</div>
+        <br>
 	    	<input type="submit" value="Discard Moves" class="btn btn-dark">
     	</form>
 
@@ -58,6 +59,7 @@
     		</select>
     		
     		</div>
+        <br>
     		<input class="btn btn-dark" value="Assign Moves" type="submit">
     	</form>
     </div>
