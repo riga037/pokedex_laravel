@@ -23,9 +23,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
         <div class="container">
             <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                
-                
+            <img style="height:45px" src="icon/icon.png">
             </a>
+       
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                 <span class="navbar-toggler-icon"></span>
             </button>
