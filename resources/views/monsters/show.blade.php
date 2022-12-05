@@ -1,4 +1,4 @@
-@extends('plantilla')
+<!-- @extends('plantilla')
   
 @section('content')
 <br>
@@ -40,4 +40,4 @@
         </ul>
     </div>
         
-@endsection
+@endsection -->

@@ -148,7 +148,7 @@ class MonsterController extends Controller
             'powers' => 'exists:moves,id',                       
         ]);
 
-       $monster->moves()->attach($request->powers);
+       $monster->moves()->attach($request->moves);
         
         return redirect()->route('monsters.editmoves',$monster->id)
                         ->with('success','Moves assigned successfuly.');

@@ -1,8 +1,10 @@
    
 <?php $__env->startSection('content'); ?>
+<br>
 <div>
-    <a href="<?php echo e(route('monsters.index')); ?>">Back</a>
+  <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('monsters.index')); ?>'">Back</button>
 </div>
+<br>
 <div>    
     <h2>Moves of <?php echo e($monster->monstername); ?></h2>
 </div>
@@ -36,6 +38,7 @@
 	    			
 	    	</select>
 	    	</div>
+        <br>
 	    	<input type="submit" value="Discard Moves" class="btn btn-dark">
     	</form>
 
@@ -55,6 +58,7 @@
     		</select>
     		
     		</div>
+        <br>
     		<input class="btn btn-dark" value="Assign Moves" type="submit">
     	</form>
     </div>
