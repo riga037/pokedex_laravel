@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('monsters', function (Blueprint $table) {
             $table->id();
-            $table->string('monstername',75);
-            $table->string('category',25);
-            $table->string('description',5000);
+            $table->string('monstername',25);
+            $table->string('category',75);
+            $table->string('description',1000);
             $table->foreignId('type_id')->constrained();
             $table->timestamps();
         });

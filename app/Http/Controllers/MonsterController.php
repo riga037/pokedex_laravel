@@ -48,9 +48,9 @@ class MonsterController extends Controller
     {
         //
         $request->validate([
-            'monstername' => 'required | max:25 |unique:monsters',
-            'category' => 'required | max:75', 
-            'description' => 'required | max:500',
+            'monstername' => 'required | min:3',
+            'category' => 'required | min:3', 
+            'description' => 'required | min:3',
             'type_id' => 'required|exists:types,id'           
         ]);
     
@@ -99,9 +99,9 @@ class MonsterController extends Controller
     {
         //
         $request->validate([
-            'monstername' => 'required | max:25',
-            'category' => 'required | max:75', 
-            'description' => 'required | max:500',
+            'monstername' => 'required | min:3',
+            'category' => 'required | min:3', 
+            'description' => 'required | min:3',
             'type_id' => 'required|exists:types,id'           
         ]);
 

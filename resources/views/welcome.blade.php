@@ -1,6 +1,8 @@
 @extends('plantilla')
 @section('content')
 
+<br>
+
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -21,7 +23,7 @@
         <p>Monsters can learn and forget battle moves as they grow.</p>
       </div>
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" style="background:radial-gradient(circle, rgba(177,207,255,1) 0%, rgba(99,159,231,1) 100%);">
       <img src="/img/evos.gif" class="d-block w-100" alt="">
     </div>
   </div>

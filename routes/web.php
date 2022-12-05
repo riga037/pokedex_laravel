@@ -86,11 +86,3 @@ use App\Http\Controllers\MonsterController;
     });    
 
     });
-
-    
-
-
-    
-    /*Route::get('/secret', function () {
-        return "Estàs autentificat!!!";
-    })->middleware('auth');*/
