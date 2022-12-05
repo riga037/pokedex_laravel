@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="display:inline-block">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -70,6 +71,9 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div style="display:inline-block">
+                <img src="/img/register.gif" class="d-block w-100" alt="">
             </div>
         </div>
     </div>

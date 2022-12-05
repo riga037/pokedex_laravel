@@ -1,14 +1,17 @@
 <?php $__env->startSection('content'); ?>
+
 <br>
+
 <div>
     <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('types.index')); ?>'">Back</button>
 </div>
+
 <br>
+
 <div>
     <h2>Add New Type</h2>
 </div>
     
-   
 <?php if($errors->any()): ?>
     <div class="alert alert-danger">
         <ul>
@@ -27,14 +30,14 @@
         <strong>Type Name:</strong>
         <input type="text" name="name" value="<?php echo e(old('name')); ?>">
     </div>
-    
+    <br>
     <div>           
         <strong>Description:</strong>
         <input type="text" name="description" value="<?php echo e(old('description')); ?>">
     </div>
- 
+    <br>
     <div>
-        <input type="submit" value="Save">
+        <input type="submit" value="Save" class="btn btn-dark">
     </div>
     
 </form>

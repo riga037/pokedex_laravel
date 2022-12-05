@@ -49,7 +49,7 @@
              @csrf
       		<div class="form-group">
     		<label>Moves List</label>
-    		<select multiple class="form-control" size="20" name="moves[]">
+    		<select multiple class="form-control" size="10" name="moves[]">
           
     		  @foreach($moves as $move) {        
                     <option value="{{ $move->id }}">

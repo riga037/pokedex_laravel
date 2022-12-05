@@ -48,7 +48,7 @@
              <?php echo csrf_field(); ?>
       		<div class="form-group">
     		<label>Moves List</label>
-    		<select multiple class="form-control" size="20" name="moves[]">
+    		<select multiple class="form-control" size="10" name="moves[]">
           
     		  <?php $__currentLoopData = $moves; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $move): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> {        
                     <option value="<?php echo e($move->id); ?>">

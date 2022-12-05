@@ -1,17 +1,17 @@
 @extends('plantilla')
-  
 @section('content')
 
 <br>
+
 <div>
     <button type="button" class="btn btn-warning" onclick="location.href='{{ route('monsters.index') }}'">Back</a>
 </div>
+
 <br>
 
 <div>
     <h2>Add New Monster</h2>
 </div>
-    
    
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -53,10 +53,8 @@
         </select>
     </div>
     <br>
-    <br>
-        
     <div>
-        <input type="submit" value="Save">
+        <input type="submit" value="Save" class="btn btn-dark">
     </div>
     
 </form>

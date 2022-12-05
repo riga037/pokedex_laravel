@@ -1,13 +1,15 @@
-  
 <?php $__env->startSection('content'); ?>
+<br>
 <div>
-    <a href="<?php echo e(route('moves.index')); ?>">Back</a>
+    <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('monsters.index')); ?>'">Back</a>
 </div>
+
+<br>
+
 <div>
     <h2>Update Move</h2>
 </div>
     
-   
 <?php if($errors->any()): ?>
     <div class="alert alert-danger">
         <ul>
@@ -26,12 +28,12 @@
         <strong>Name:</strong>
         <input type="text" name="name" value="<?php echo e(old('name', $move->name)); ?>">
     </div>  
-
+    <br>
     <div>
         <strong>Description:</strong>
         <input type="text" name="description" value="<?php echo e(old('description', $move->description)); ?>">
     </div>     
-        
+    <br>
     <div>
         <input type="submit" value="Save">
     </div>

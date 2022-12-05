@@ -1,13 +1,15 @@
-  
 <?php $__env->startSection('content'); ?>
+<br>
 <div>
-    <a href="<?php echo e(route('monsters.index')); ?>"> Back</a>
+    <button type="button" class="btn btn-warning" onclick="location.href='<?php echo e(route('monsters.index')); ?>'">Back</a>
 </div>
+
+<br>
+
 <div>
     <h2>Update Monster</h2>
 </div>
     
-   
 <?php if($errors->any()): ?>
     <div class="alert alert-danger">
         <ul>
@@ -26,17 +28,17 @@
         <strong>Monster Name:</strong>
         <input type="text" name="monstername" value="<?php echo e(old('mosntername', $monster->monstername)); ?>">
     </div>
-        
+    <br>
     <div>           
         <strong>Category:</strong>
         <input type="text" name="category" value="<?php echo e(old('category', $monster->category)); ?>">
     </div>
-        
+    <br>
     <div>           
         <strong>Description:</strong>
         <input type="text" name="description" value="<?php echo e(old('description', $monster->description)); ?>">
     </div>    
-
+    <br>
     <div>           
         <strong>Type:</strong>
         <select name="type_id">
@@ -45,8 +47,7 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>            
         </select>
     </div>
-        
-        
+    <br>
     <div>
         <input type="submit" value="Desar">
     </div>

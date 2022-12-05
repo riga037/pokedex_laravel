@@ -1,14 +1,16 @@
 @extends('plantilla')
-  
 @section('content')
+<br>
 <div>
-    <a href="{{ route('monsters.index') }}"> Back</a>
+    <button type="button" class="btn btn-warning" onclick="location.href='{{ route('monsters.index') }}'">Back</a>
 </div>
+
+<br>
+
 <div>
     <h2>Update Monster</h2>
 </div>
     
-   
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -27,17 +29,17 @@
         <strong>Monster Name:</strong>
         <input type="text" name="monstername" value="{{ old('mosntername', $monster->monstername) }}">
     </div>
-        
+    <br>
     <div>           
         <strong>Category:</strong>
         <input type="text" name="category" value="{{ old('category', $monster->category) }}">
     </div>
-        
+    <br>
     <div>           
         <strong>Description:</strong>
         <input type="text" name="description" value="{{ old('description', $monster->description) }}">
     </div>    
-
+    <br>
     <div>           
         <strong>Type:</strong>
         <select name="type_id">
@@ -46,10 +48,9 @@
             @endforeach            
         </select>
     </div>
-        
-        
+    <br>
     <div>
-        <input type="submit" value="Desar">
+        <input type="submit" value="Save" class="btn btn-dark">
     </div>
     
 </form>
