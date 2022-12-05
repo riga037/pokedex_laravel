@@ -13,7 +13,7 @@
       <img src="/img/moves.gif" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block" style="text-shadow: 2px 2px 2px white">
         <h5>Moves Management</h5>
-        <p>Monsters can learn and forget moves as they grow.</p>
+        <p>Monsters can learn and forget battle moves as they grow.</p>
       </div>
     </div>
     <div class="carousel-item">
