@@ -18,7 +18,7 @@ class MonsterSeeder extends Seeder
 
         $monsters = [
             [                
-                'monstername' => 'Bulbasur',
+                'monstername' => 'Bulbasaur',
                 'category' => 'Seed',
                 'description' =>'It carries the seed of a plant on its back since it is born, the seed grows slowly. Researchers are not sure whether to classify Bulbasaur as a plant or an animal. Bulbasaurs are extraordinarily strong and very difficult to capture in the wild.',
                 'type_id' => '1',

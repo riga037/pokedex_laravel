@@ -1,10 +1,13 @@
 @extends('plantilla')
-
 @section('content')
 <br>
-<button type="button" class="btn btn-link" onclick="location.href='{{ route('moves.index') }}'">Back</button>
+<div>
+    <button type="button" class="btn btn-warning" onclick="location.href='{{ route('moves.index') }}'">Back</a>
+</div>
+
 <br>
-<h2>Move</h2>
+
+<h2>Move Data</h2>
        
 <div>
 <strong>Name:</strong>
@@ -21,9 +24,8 @@
 <strong>Monsters learning this move:</strong>
 <ul>
    @foreach($move->monsters as $monster)
-     	<li>
-            {{ $monster->monstername }} 
-            </li>
+     	<li>{{ $monster->monstername }} </li>
+        <img src="/img/show/{{ $monster->id }}.gif" onerror="this.src='/img/show/undetermined.gif'">
    @endforeach
 </ul>
 </div>

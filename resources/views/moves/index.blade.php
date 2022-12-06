@@ -1,6 +1,6 @@
 @extends('plantilla')
-
 @section('content')
+    <br>
     <div>        
         <h2>Moves</h2>
     </div>
