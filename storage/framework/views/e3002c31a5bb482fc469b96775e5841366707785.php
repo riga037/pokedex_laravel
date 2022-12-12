@@ -1,23 +1,24 @@
-<!doctype html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Pokedex</title>
+  <!-- CSS only -->
+  <!-- CSS only -->
+   <!-- Scripts -->
+   <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
+   <style>
+    #nav {
+        transition: all .3s;
+    }
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-
-    <title><?php echo e(config('app.name', 'Pokédex App')); ?></title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
+    #nav:hover {
+        background-color: #D70040;
+        border-radius: 5px;
+    }
+    </style>
 </head>
 <body>
-    <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
         <div class="container">
             <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
@@ -33,9 +34,9 @@
                 <ul class="navbar-nav me-auto p-3">
                 <div>
                     <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/')); ?>">Home</a>
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/monsters')); ?>">Monsters</a>
                     <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/types')); ?>">Types</a>
                     <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/moves')); ?>">Moves</a>
-                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
                 </div>
                 </ul>
 

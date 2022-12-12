@@ -1,4 +1,5 @@
 <?php $__env->startSection('content'); ?>
+    <br>
     <div>        
         <h2>Moves</h2>
     </div>

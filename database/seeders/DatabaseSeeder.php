@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             MonsterSeeder::class,
             MoveSeeder::class,
             MonsterMoveSeeder::class,
+            UserSeeder::class,
          ]);
     }
 }

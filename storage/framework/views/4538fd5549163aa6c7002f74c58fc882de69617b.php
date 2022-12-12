@@ -34,9 +34,9 @@
                 <ul class="navbar-nav me-auto p-3">
                 <div>
                     <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/')); ?>">Home</a>
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/monsters')); ?>">Monsters</a> 
                     <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/types')); ?>">Types</a>
-                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/moves')); ?>">Moves</a>
-                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/monsters')); ?>">Monsters</a>         
+                    <a id="nav" class="navbar-brand p-3" href="<?php echo e(url('/moves')); ?>">Moves</a>        
                 </div>
                 </ul>
 
