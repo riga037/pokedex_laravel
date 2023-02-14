@@ -35,7 +35,7 @@
                 <div>
                     <a id="nav" class="navbar-brand p-3" href="{{ url('/') }}">Home</a>
                     <a id="nav" class="navbar-brand p-3" href="{{ url('/monsters') }}">Monsters</a> 
-                    <a id="nav" class="navbar-brand p-3" href="{{ url('/types') }}">Types</a>
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/typestable') }}">Types</a>
                     <a id="nav" class="navbar-brand p-3" href="{{ url('/moves') }}">Moves</a>        
                 </div>
                 </ul>
