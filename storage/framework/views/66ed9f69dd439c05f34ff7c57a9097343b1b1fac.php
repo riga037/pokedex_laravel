@@ -40,7 +40,7 @@
             <td><?php echo e($type->description); ?></td>                     
             <td>  
                 <div class="d-flex">   
-                  <button type="button" class="btn btn-primary m-2" onclick="location.href='<?php echo e(route('types.show',$type->id)); ?>'">Show</button> 
+                  <button type="button" class="btn btn-primary m-2" onclick="location.href='<?php echo e(route('types.show',$type->id)); ?>'">Show</button>
                   <?php if(Auth::user()->role=='admin'): ?>       
                   <button type="button" class="btn btn-success m-2" onclick="location.href='<?php echo e(route('types.edit',$type->id)); ?>'">Edit</button>
                   <button type="button" class="btn btn-danger m-2" onclick="location.href='<?php echo e(route('types.destroy',$type->id)); ?>'">Delete</button>    

@@ -2,96 +2,6 @@
 
 @section('content')
 
-<!-- <div class="content">
-            <h1>Who's That Pokémon ?</h1>
-    <div id="wrapper">
-        <img id="pkmn">
-    </div>
-    <div id="game">
-        Enter a name: <input type="text" id="enteredName">
-        <br><br>
-        <input type="button" id="button" value="Check">
-        <h3 id="msg"></h3>
-    </div>
-    <div id="data">
-                <h3 id="item1"></h3>
-        <h3 id="item2"></h3>
-        <h3 id="item3"></h3>
-    </div>
-    <h3 id="points">0 points</h3>
-    <h3 id="total"></h3>
-    <h3 id="timer">Time left: 100 s</h3>
-    <input type="button" id="again" value="Next Pokémon">
-    </div>
-
-    <script type="text/javascript">
-    
-    async function apiCall() {
-        
-                var rand = Math.floor(Math.random() * 15);
-        
-        await fetch("https://pokeapi.co/api/v2/pokemon/" + rand)
-        .then(response => response.json())
-        .then(pokemon => {
-            img.src = "/pkmn/" + rand + ".gif";
-            num.textContent = "#" + pokemon.id;
-            pkmnName.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
-            pkmnType.textContent = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1);
-            if(pokemon.types[1] != null) {
-                pkmnType.textContent += "/" + pokemon.types[1].type.name.charAt(0).toUpperCase() + pokemon.types[1].type.name.slice(1)
-            }
-            pkmnType.textContent += " type";
-            document.getElementById("pkmn").style.filter = "brightness(0%)";
-            document.getElementById("game").style.display = "block";
-            document.getElementById("data").style.display = "none";
-            document.getElementById("msg").innerHTML = "";
-        })
-    }
-    
-    function check() {
-        if(document.getElementById("enteredName").value == pkmnName.textContent) {
-            document.getElementById("pkmn").style.filter = "brightness(100%)";
-            document.getElementById("game").style.display = "none";
-            document.getElementById("data").style.display = "block";
-            numPoints++;
-            points.innerHTML = numPoints + " points";
-            console.log(numPoints);
-        } else {
-            document.getElementById("msg").innerHTML = "Wrong name!";
-        }
-        
-    }
-    
-    function countdown() {
-        if (timeLeft == 0) {
-            clearTimeout(timerId);
-            document.getElementById("points").style.display = "none";
-            document.getElementById("timer").innerHTML = "Time's up!";
-            document.getElementById("total").innerHTML = "Total points: " + numPoints;
-        } else {
-            document.getElementById("timer").innerHTML = "Time left: " + timeLeft + " s";
-            timeLeft--;
-        }
-    }
-    
-    var timeLeft = 100;
-    var timerId = setInterval(countdown, 1000);
-    
-    var numPoints = 0;
-    
-    var img = document.getElementById("pkmn");
-            var num = document.getElementById("item1");
-    var pkmnName = document.getElementById("item2");
-    var pkmnType = document.getElementById("item3");
-    var points = document.getElementById("points");
-    
-    document.getElementById("button").addEventListener("click",check,false);
-    document.getElementById("again").addEventListener("click",apiCall,false);
-    
-    apiCall();
-    
-    </script> -->
-
 <br>
 
 <h1>CRUD Moves</h1>
@@ -142,7 +52,7 @@
     const divErrors = document.getElementById("errors");
     divErrors.style.display = "none";
     
-    const url = "http://127.0.0.1:8000/api/moves";
+    const url = "http://localhost:8000/api/moves";
 
     function showForm() {
 
@@ -213,7 +123,13 @@
         
         try {
             
-            const response = await fetch(url);
+            const response = await fetch(url,
+            {headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }
+            });
             const json = await response.json();
             const rows = json.data.data;
             
@@ -233,7 +149,7 @@
     
     async function getToken() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/token');
+            const response = await fetch('http://localhost:8000/token');
             const json = await response.json();
             window.localStorage.setItem("token", json.token);
             console.log(json);
@@ -264,7 +180,7 @@ async function saveMove(event)  {
     
     console.log('Desar');
     
-    var newType = {
+    var newMove = {
         'name' : moveNameInput.value,
         'description' : moveDescriptionInput.value
     }
@@ -343,7 +259,7 @@ async function updateMove(id) {
     var rowDescription = document.getElementById(id).children[2];
     console.log(rowDescription);
     
-    var updatedType = {
+    var updatedMove = {
         'name' : moveNameInput.value,
         'description' : moveDescriptionInput.value
     }

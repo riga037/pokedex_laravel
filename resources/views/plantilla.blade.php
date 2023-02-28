@@ -34,9 +34,10 @@
                 <ul class="navbar-nav me-auto p-3">
                 <div>
                     <a id="nav" class="navbar-brand p-3" href="{{ url('/') }}">Home</a>
-                    <a id="nav" class="navbar-brand p-3" href="{{ url('/monsters') }}">Monsters</a> 
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/monsterstable') }}">Monsters</a> 
                     <a id="nav" class="navbar-brand p-3" href="{{ url('/typestable') }}">Types</a>
-                    <a id="nav" class="navbar-brand p-3" href="{{ url('/moves') }}">Moves</a>        
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/movestable') }}">Moves</a>
+                    <a id="nav" class="navbar-brand p-3" href="{{ url('/game') }}">Who's That Pokémon?</a>
                 </div>
                 </ul>
 

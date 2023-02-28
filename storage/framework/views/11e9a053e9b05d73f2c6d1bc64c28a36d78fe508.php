@@ -140,7 +140,7 @@
     const divErrors = document.getElementById("errors");
     divErrors.style.display = "none";
     
-    const url = "http://127.0.0.1:8000/api/types";
+    const url = "http://localhost:8000/api/types";
 
     function showForm() {
 
@@ -211,7 +211,14 @@
         
         try {
             
-            const response = await fetch(url);
+            const response = await fetch(url,
+            {headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }});
+
+
             const json = await response.json();
             const rows = json.data.data;
             
@@ -231,7 +238,12 @@
     
     async function getToken() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/token');
+            const response = await fetch('http://localhost:8000/token'); 
+            /*,{
+            method: 'GET',
+            credentials: 'include'
+            });*/
+            
             const json = await response.json();
             window.localStorage.setItem("token", json.token);
             console.log(json);
@@ -242,7 +254,7 @@
     
     async function getUser() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/user',
+            const response = await fetch('http://localhost:8000/api/user',
             {headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json',

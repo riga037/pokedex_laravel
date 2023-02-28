@@ -18,5 +18,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/types',App\Http\Controllers\api\typesController::class);
-Route::resource('/moves',App\Http\Controllers\api\movesController::class);
+Route::middleware('auth:sanctum')->group( function () {
+	
+    Route::resource('/monsters',App\Http\Controllers\api\monstersController::class);
+    Route::get('/allmonsters',[App\Http\Controllers\api\monstersController::class , 'index2']);
+    
+    Route::resource('/types',App\Http\Controllers\api\typesController::class);
+    Route::resource('/moves',App\Http\Controllers\api\movesController::class);
+    
+});
+
+
