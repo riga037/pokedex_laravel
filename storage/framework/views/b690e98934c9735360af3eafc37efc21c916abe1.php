@@ -1,19 +1,21 @@
 <?php $__env->startSection('content'); ?>
 
-<!--<br>
+<br>
 
-<h1>CRUD Moves</h1>
+<h1>CRUD Monsters</h1>
 
 <hr>
 
 <input type="button" class="btn btn-info" id="createButton" onclick="showForm()" value="Create/Update Form">
 
 <div id="createForm" style="display:none">
-    Name:
-    <input type="text" id="moveNameInput"><br><br>
-    Description:
-    <input type="text" id="moveDescriptionInput"><br><br>
-    <input type="button" class="btn btn-dark" id="saveButton" onclick="showForm()" value="Save new Move">
+Name:
+<input type="text" id="monsterNameInput"><br><br>
+Category:
+<input type="text" id="monsterCategoryInput"><br><br>
+Description:
+<input type="text" id="monsterDescriptionInput"><br><br>
+<input type="button" class="btn btn-dark" id="saveButton" onclick="showForm()" value="Save new Monster">
 </div>
 
 <div id="errors" class="alert alert-danger"></div>
@@ -21,166 +23,175 @@
 <br>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Operations</th>
-        </tr>
-    </thead>
-    <tbody id="taula">
-    </tbody>
+<thead>
+<tr>
+<th>ID</th>
+<th>Icon</th>
+<th>Name</th>
+<th>Category</th>
+<th>Description</th>
+<th>Type</th>
+<th>Operations</th>
+</tr>
+</thead>
+<tbody id="taula">
+</tbody>
 </table>
 
 <nav class="mt-2">
-    <ul id="pagination" class="pagination"></ul>
+<ul id="pagination" class="pagination"></ul>
 </nav>
 
 </body>
 </html>
 
 <script type="text/javascript">
-    
-    const typeNameinput = document.getElementById('moveNameInput');
-    const typeDescriptionInput = document.getElementById('moveDescriptionInput');
-    const saveButton = document.getElementById('saveButton');
-    saveButton.addEventListener('click', saveMove);
-    
-    const divErrors = document.getElementById("errors");
-    divErrors.style.display = "none";
-    
-    const url = "http://localhost:8000/api/moves";
 
-    function showForm() {
+const monsterNameinput = document.getElementById('monsterNameInput');
+const monsterCategoryInput = document.getElementById('monsterCategoryInput');
+const monsterDescriptionInput = document.getElementById('monsterDescriptionInput');
+const saveButton = document.getElementById('saveButton');
+saveButton.addEventListener('click', saveMonster);
 
-        document.getElementById("createButton").style.display = "none";
-        document.getElementById("createForm").style.display = "block";
+const divErrors = document.getElementById("errors");
+divErrors.style.display = "none";
 
+const url = "http://localhost:8000/api/monsters";
+
+function showForm() {
+    
+    document.getElementById("createButton").style.display = "none";
+    document.getElementById("createForm").style.display = "block";
+    
+}
+
+function showErrors(errors) {
+    
+    divErrors.style.display = "block";
+    divErrors.innerHTML = "";
+    const ul = document.createElement("ul");
+    
+    for (const error of errors) {
+        const li = document.createElement("li");
+        li.textContent = error;
+        ul.appendChild(li);
     }
     
-    function showErrors(errors) {
-        
-        divErrors.style.display = "block";
-        divErrors.innerHTML = "";
-        const ul = document.createElement("ul");
-        
-        for (const error of errors) {
-            const li = document.createElement("li");
-            li.textContent = error;
-            ul.appendChild(li);
-        }
-        
-        divErrors.appendChild(ul);
-        
-    }
-
-    function afegirLinks(links) {
-        
-        for(const link of links) {
-           
-            afegirBoto(link);
-        }
-    }
-
-    function afegirBoto(link) {
-        console.log(link);
-        
-        const pagli = document.createElement("li");
-        pagli.classList.add('page-item');
-
-        
-
-        if(link.url == null) {
-            pagli.classList.add('disabled');
-            
-        }
-        
-        if(link.active == true) {
-            pagli.classList.add('active');
-        }
-
-        const pagAnchor = document.createElement("a");
-        pagAnchor.innerHTML = link.label;
-        pagAnchor.addEventListener('click', function(event) { paginate(link.url)});
-        pagAnchor.classList.add('page-link');
-        pagAnchor.setAttribute('href',"#");
-
-        pagli.appendChild(pagAnchor);
-        pagination.appendChild(pagli);
-    }
-
-    function paginate(url) {
-        console.log(url);
-        pagination.innerHTML = "";
-        taula.innerHTML = "";
-        loadIntoTable(url);
-    }
+    divErrors.appendChild(ul);
     
-    async function loadIntoTable(url) {
+}
+
+function afegirLinks(links) {
+    
+    for(const link of links) {
         
-        try {
-            
-            const response = await fetch(url,
-            {headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-            }
-            });
-            const json = await response.json();
-            const rows = json.data.data;
-            
-            for (const row of rows) {
-                document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td>"+row.name+"</td><td>"+row.description+"</td><td><input type=button onclick='deleteMove("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMove("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
-            }
+        afegirBoto(link);
+    }
+}
 
-            const links = json.data.links;
-
-            afegirLinks(links);
-            
-        } catch(error) {
-            
-        }
+function afegirBoto(link) {
+    console.log(link);
+    
+    const pagli = document.createElement("li");
+    pagli.classList.add('page-item');
+    
+    
+    
+    if(link.url == null) {
+        pagli.classList.add('disabled');
         
     }
     
-    async function getToken() {
-        try {
-            const response = await fetch('http://localhost:8000/token');
-            const json = await response.json();
-            window.localStorage.setItem("token", json.token);
-            console.log(json);
-        } catch (error) {
-            console.log('error');
-        }
+    if(link.active == true) {
+        pagli.classList.add('active');
     }
     
-    async function getUser() {
-        try {
-            const response = await fetch('http://127.0.0.1:8000/api/user',
-            {headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-            }
+    const pagAnchor = document.createElement("a");
+    pagAnchor.innerHTML = link.label;
+    pagAnchor.addEventListener('click', function(event) { paginate(link.url)});
+    pagAnchor.classList.add('page-link');
+    pagAnchor.setAttribute('href',"#");
+    
+    pagli.appendChild(pagAnchor);
+    pagination.appendChild(pagli);
+}
+
+function paginate(url) {
+    console.log(url);
+    pagination.innerHTML = "";
+    taula.innerHTML = "";
+    loadIntoTable(url);
+}
+
+async function loadIntoTable(url) {
+    
+    var noImage = 'this.onerror=null; this.src="/img/show/undetermined.gif"';
+    
+    try {
+        
+        const response = await fetch(url,
+        {headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }
-        );
+    });
+    const json = await response.json();
+    const rows = json.data.data;
+    
+    for (const row of rows) {
+        
+        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
+        
+    }
+    
+    const links = json.data.links;
+    
+    afegirLinks(links);
+    
+} catch(error) {
+    
+}
+
+}
+
+async function getToken() {
+    try {
+        const response = await fetch('http://localhost:8000/token');
         const json = await response.json();
+        window.localStorage.setItem("token", json.token);
         console.log(json);
     } catch (error) {
         console.log('error');
     }
 }
 
+async function getUser() {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/user',
+        {headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }
+    }
+);
+const json = await response.json();
+console.log(json);
+} catch (error) {
+    console.log('error');
+}
+}
 
-async function saveMove(event)  {
+
+async function saveMonster(event)  {
     
     console.log('Desar');
     
-    var newMove = {
-        'name' : moveNameInput.value,
-        'description' : moveDescriptionInput.value
+    var newMonster = {
+        'name' : monsterNameInput.value,
+        'category' : monsterCategoryInput.value,
+        'description' : monsterDescriptionInput.value
     }
     
     try {
@@ -192,7 +203,7 @@ async function saveMove(event)  {
                 'Accept': 'application/json'
             },
             
-            body: JSON.stringify(newMove)
+            body: JSON.stringify(newMonster)
         }
         
         )
@@ -209,7 +220,7 @@ async function saveMove(event)  {
         } else {
             
             showErrors(data.data);
-            console.log("Error creating move.");
+            console.log("Error creating monster.");
             
         }
         
@@ -221,7 +232,7 @@ async function saveMove(event)  {
     
 }
 
-async function deleteMove(id) {
+async function deleteMonster(id) {
     
     console.log(id)
     
@@ -248,7 +259,7 @@ async function deleteMove(id) {
     
 }
 
-async function updateMove(id) {
+async function updateMonster(id) {
     
     console.log(id)
     
@@ -257,9 +268,10 @@ async function updateMove(id) {
     var rowDescription = document.getElementById(id).children[2];
     console.log(rowDescription);
     
-    var updatedMove = {
-        'name' : moveNameInput.value,
-        'description' : moveDescriptionInput.value
+    var updatedMonster = {
+        'name' : monsterNameInput.value,
+        'category' : monsterCategoryInput.value,
+        'description' : monsterDescriptionInput.value
     }
     
     try {
@@ -267,7 +279,7 @@ async function updateMove(id) {
         const response = await fetch(url+"/"+id, {method: "PUT", headers: {
             'Content-type': 'application/json',
             'Accept': 'application/json'
-        },body: JSON.stringify(updatedMove)});
+        },body: JSON.stringify(updatedMonster)});
         
         const data = await response.json();
         
@@ -294,8 +306,7 @@ async function updateMove(id) {
 
 function afegirFila(row) {
     
-    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td>"+row.name+"</td><td>"+row.description+"</td><td><input type=button onclick='deleteMove("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMove("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
-    
+    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";    
     
 }
 
@@ -308,7 +319,7 @@ getInfos();
 loadIntoTable(url);
 
 
-</script>-->
+</script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('plantilla', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/usuari/projectes/pokedex_laravel/resources/views/monsters/api/index.blade.php ENDPATH**/ ?>

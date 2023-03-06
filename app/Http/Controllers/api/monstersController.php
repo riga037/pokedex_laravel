@@ -18,7 +18,7 @@ class monstersController extends Controller
     public function index()
     {
         //
-        $monsters = monster::paginate(3);
+        $monsters = monster::paginate(6);
 
         $response = [
             'success' => true,
@@ -126,7 +126,7 @@ class monstersController extends Controller
         $response = [
             'success' => true,
             'message' => "Monster recovered.",
-            'data' => $type,
+            'data' => $monster,
         ];
 
         return response()->json($response,200);
