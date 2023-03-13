@@ -218,7 +218,6 @@
                 'Authorization': 'Bearer ' + window.localStorage.getItem('token')
             }});
 
-
             const json = await response.json();
             const rows = json.data.data;
             
@@ -276,7 +275,8 @@ async function saveType(event)  {
     
     var newType = {
         'name' : typeNameInput.value,
-        'description' : typeDescriptionInput.value
+        'description' : typeDescriptionInput.value,
+        'Authorization': 'Bearer ' + window.localStorage.getItem('token')
     }
     
     try {
@@ -285,13 +285,12 @@ async function saveType(event)  {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
             },
             
             body: JSON.stringify(newType)
-        }
-        
-        )
+        });
         
         const data = await response.json();
         
@@ -323,7 +322,11 @@ async function deleteType(id) {
     
     try {
         
-        const response = await fetch(url+"/"+id, {method: "DELETE"});
+        const response = await fetch(url+"/"+id, {method: "DELETE", headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }});
         const json = await response.json();
         
         if(response.ok) {
@@ -362,7 +365,8 @@ async function updateType(id) {
         
         const response = await fetch(url+"/"+id, {method: "PUT", headers: {
             'Content-type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         },body: JSON.stringify(updatedType)});
         
         const data = await response.json();

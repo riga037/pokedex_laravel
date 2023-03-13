@@ -19,13 +19,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group( function () {
-	
+    
     Route::resource('/monsters',App\Http\Controllers\api\monstersController::class);
     Route::get('/allmonsters',[App\Http\Controllers\api\monstersController::class , 'index2']);
-    
+
     Route::resource('/types',App\Http\Controllers\api\typesController::class);
     Route::resource('/moves',App\Http\Controllers\api\movesController::class);
     
 });
+
+Route::get('/login', function() {
+    return "Has de validar-te";
+})->name('login');
 
 

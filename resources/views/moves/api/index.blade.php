@@ -191,7 +191,8 @@ async function saveMove(event)  {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
             },
             
             body: JSON.stringify(newMove)
@@ -229,7 +230,11 @@ async function deleteMove(id) {
     
     try {
         
-        const response = await fetch(url+"/"+id, {method: "DELETE"});
+        const response = await fetch(url+"/"+id, {method: "DELETE", headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }});
         const json = await response.json();
         
         if(response.ok) {
@@ -268,7 +273,8 @@ async function updateMove(id) {
         
         const response = await fetch(url+"/"+id, {method: "PUT", headers: {
             'Content-type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         },body: JSON.stringify(updatedMove)});
         
         const data = await response.json();

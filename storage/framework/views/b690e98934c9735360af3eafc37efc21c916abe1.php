@@ -15,6 +15,8 @@ Category:
 <input type="text" id="monsterCategoryInput"><br><br>
 Description:
 <input type="text" id="monsterDescriptionInput"><br><br>
+Type:
+<select id="monsterTypeInput"></select><br><br>
 <input type="button" class="btn btn-dark" id="saveButton" onclick="showForm()" value="Save new Monster">
 </div>
 
@@ -141,7 +143,7 @@ async function loadIntoTable(url) {
     
     for (const row of rows) {
         
-        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
+        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href=''><input type='button' value='Show' class='btn btn-dark m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
         
     }
     
@@ -157,7 +159,13 @@ async function loadIntoTable(url) {
 
 async function getToken() {
     try {
-        const response = await fetch('http://localhost:8000/token');
+        const response = await fetch('http://localhost:8000/token',
+        {headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }
+    });
         const json = await response.json();
         window.localStorage.setItem("token", json.token);
         console.log(json);
@@ -189,9 +197,10 @@ async function saveMonster(event)  {
     console.log('Desar');
     
     var newMonster = {
-        'name' : monsterNameInput.value,
+        'monstername' : monsterNameInput.value,
         'category' : monsterCategoryInput.value,
-        'description' : monsterDescriptionInput.value
+        'description' : monsterDescriptionInput.value,
+        'type_id' : monsterTypeInput.value
     }
     
     try {
@@ -200,13 +209,14 @@ async function saveMonster(event)  {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
             },
             
             body: JSON.stringify(newMonster)
         }
         
-        )
+        );
         
         const data = await response.json();
         
@@ -215,7 +225,9 @@ async function saveMonster(event)  {
         if(response.ok) {
             
             console.log(data.data);
-            afegirFila(data.data);
+            document.getElementById("taula").innerHTML = "";
+            pagination.innerHTML = "";
+            loadIntoTable(url);
             
         } else {
             
@@ -238,7 +250,11 @@ async function deleteMonster(id) {
     
     try {
         
-        const response = await fetch(url+"/"+id, {method: "DELETE"});
+        const response = await fetch(url+"/"+id, {method: "DELETE", headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }});
         const json = await response.json();
         
         if(response.ok) {
@@ -263,22 +279,28 @@ async function updateMonster(id) {
     
     console.log(id)
     
-    var rowName = document.getElementById(id).children[1];
+    var rowName = document.getElementById(id).children[2];
     console.log(rowName);
-    var rowDescription = document.getElementById(id).children[2];
+    var rowCategory = document.getElementById(id).children[3];
+    console.log(rowCategory);
+    var rowDescription = document.getElementById(id).children[4];
     console.log(rowDescription);
+    var rowType = document.getElementById(id).children[5];
+    console.log(rowType);
     
     var updatedMonster = {
-        'name' : monsterNameInput.value,
+        'monstername' : monsterNameInput.value,
         'category' : monsterCategoryInput.value,
-        'description' : monsterDescriptionInput.value
+        'description' : monsterDescriptionInput.value,
+        'type_id' : monsterTypeInput.value
     }
     
     try {
         
         const response = await fetch(url+"/"+id, {method: "PUT", headers: {
             'Content-type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         },body: JSON.stringify(updatedMonster)});
         
         const data = await response.json();
@@ -286,8 +308,10 @@ async function updateMonster(id) {
         if(response.ok) {
             const row = document.getElementById(id);
             console.log(row);
-            rowName.innerHTML = data.data.name;
+            rowName.innerHTML = data.data.monstername;
+            rowCategory.innerHTML = data.data.category;
             rowDescription.innerHTML = data.data.description;
+            rowType.innerHTML = data.data.type.name;
             
         } else {
             console.log("Updating error.");
@@ -306,7 +330,7 @@ async function updateMonster(id) {
 
 function afegirFila(row) {
     
-    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";    
+    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";    
     
 }
 
@@ -315,7 +339,33 @@ async function getInfos() {
     await getUser();
 }
 
+async function loadTypes(){
+
+    try {
+        
+        const response = await fetch("http://localhost:8000/api/types",
+        {headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }
+    });
+    const json = await response.json();
+    const rows = json.data.data;
+    
+    for (const row of rows) {
+        
+        document.getElementById("monsterTypeInput").innerHTML += "<option value='"+row.id+"'>"+row.name+"</option>";
+        
+    }
+    
+} catch(error) {
+    
+}
+}
+
 getInfos();
+loadTypes();
 loadIntoTable(url);
 
 
