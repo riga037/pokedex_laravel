@@ -22,6 +22,8 @@ Route::middleware('auth:sanctum')->group( function () {
     
     Route::resource('/monsters',App\Http\Controllers\api\monstersController::class);
     Route::get('/allmonsters',[App\Http\Controllers\api\monstersController::class , 'index2']);
+    Route::post('/detach',[App\Http\Controllers\api\monstersController::class , 'detachMoves']);
+    Route::post('/attach',[App\Http\Controllers\api\monstersController::class , 'attachMoves']);
 
     Route::resource('/types',App\Http\Controllers\api\typesController::class);
     Route::get('/alltypes',[App\Http\Controllers\api\typesController::class , 'index2']);
