@@ -87,4 +87,5 @@
   </div>
 
 </body>
-</html><?php /**PATH /home/usuari/projectes/pokedex_laravel/resources/views/plantilla.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH /home/usuari/projectes/pokedex_laravel/resources/views/plantilla.blade.php ENDPATH**/ ?>

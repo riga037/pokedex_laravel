@@ -30,6 +30,21 @@ class movesController extends Controller
         return response()->json($response,200);
     }
 
+    public function index2()
+    {
+        //
+        $types = move::with('monsters')->get();
+
+        $response = [
+            'success' => true,
+            'message' => "Moves list recovered successfully.",
+            'data' => $types,
+        ];
+
+        //return $response;
+        return response()->json($types);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

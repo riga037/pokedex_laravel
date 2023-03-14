@@ -132,7 +132,7 @@
             const rows = json.data.data;
             
             for (const row of rows) {
-                document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td>"+row.name+"</td><td>"+row.description+"</td><td><input type=button onclick='deleteMove("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMove("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
+                document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td>"+row.name+"</td><td>"+row.description+"</td><td><a href='http://localhost:8000/moveshow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMove("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMove("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
             }
 
             const links = json.data.links;
@@ -300,7 +300,7 @@ async function updateMove(id) {
 
 function afegirFila(row) {
     
-    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td>"+row.name+"</td><td>"+row.description+"</td><td><input type=button onclick='deleteMove("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMove("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
+    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td>"+row.name+"</td><td>"+row.description+"</td><td><a href='http://localhost:8000/moveshow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMove("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMove("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
     
     
 }

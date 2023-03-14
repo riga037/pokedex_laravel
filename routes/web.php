@@ -103,13 +103,25 @@ Route::group(['middleware'=>'auth'], function() {
         Route::get('/typestable', function () {
             return view('types.api.index');
         });
+
+        Route::get('/typeshow', function () {
+            return view('types.api.show');
+        });
         
         Route::get('/monsterstable', function () {
             return view('monsters.api.index');
         });
+
+        Route::get('/monstershow', function () {
+            return view('monsters.api.show');
+        });
         
         Route::get('/movestable', function () {
             return view('moves.api.index');
+        });
+
+        Route::get('/moveshow', function () {
+            return view('moves.api.show');
         });
 
     });    

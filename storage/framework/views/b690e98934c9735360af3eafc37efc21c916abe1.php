@@ -6,7 +6,7 @@
 
 <hr>
 
-<input type="button" class="btn btn-info" id="createButton" onclick="showForm()" value="Create/Update Form">
+<input type="button" class="btn btn-dark" id="createButton" onclick="showForm()" value="Create/Update Form">
 
 <div id="createForm" style="display:none">
 Name:
@@ -143,7 +143,7 @@ async function loadIntoTable(url) {
     
     for (const row of rows) {
         
-        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href=''><input type='button' value='Show' class='btn btn-dark m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
+        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href='http://localhost:8000/monstershow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
         
     }
     
@@ -330,7 +330,7 @@ async function updateMonster(id) {
 
 function afegirFila(row) {
     
-    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";    
+    document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href='http://localhost:8000/monstershow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";    
     
 }
 

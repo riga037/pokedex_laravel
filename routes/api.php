@@ -24,7 +24,10 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/allmonsters',[App\Http\Controllers\api\monstersController::class , 'index2']);
 
     Route::resource('/types',App\Http\Controllers\api\typesController::class);
+    Route::get('/alltypes',[App\Http\Controllers\api\typesController::class , 'index2']);
+
     Route::resource('/moves',App\Http\Controllers\api\movesController::class);
+    Route::get('/allmoves',[App\Http\Controllers\api\movesController::class , 'index2']);
     
 });
 

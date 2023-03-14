@@ -12,7 +12,7 @@
 <div id="game">
 Enter a name: <input type="text" id="enteredName">
 <br><br>
-<input type="button" id="button" value="Check">
+<input type="button" id="button" class="btn btn-dark" value="Check">
 <br>
 <h3 id="msg" style="padding-top:10px"></h3>
 </div>
@@ -24,7 +24,7 @@ Enter a name: <input type="text" id="enteredName">
 <h3 id="points">0 points</h3>
 <h3 id="total"></h3>
 <h3 id="timer">Time left: 50 s</h3>
-<input type="button" id="again" value="Next Pokémon">
+<input type="button" id="again" class="btn btn-dark" value="Next Pokémon">
 </div>
 
 <script type="text/javascript">
@@ -49,6 +49,7 @@ async function apiCall() {
             }
             });
         const json = await response.json();
+        console.log(json);
         const monster = json[rand];
         pkmn.src = "/img/" + monster.id + ".gif";
         pkmn.style.filter = "brightness(0%)";

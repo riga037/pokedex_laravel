@@ -38,7 +38,7 @@ class monstersController extends Controller
     public function index2()
     {
         //
-        $monsters = monster::all();
+        $monsters = monster::with('moves')->get();
 
         $response = [
             'success' => true,

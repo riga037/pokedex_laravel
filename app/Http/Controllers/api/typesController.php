@@ -30,6 +30,21 @@ class typesController extends Controller
         return response()->json($response,200);
     }
 
+    public function index2()
+    {
+        //
+        $types = type::with('monsters')->get();
+
+        $response = [
+            'success' => true,
+            'message' => "Types list recovered successfully.",
+            'data' => $types,
+        ];
+
+        //return $response;
+        return response()->json($types);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
