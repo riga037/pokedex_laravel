@@ -16,6 +16,13 @@
         background-color: #D70040;
         border-radius: 5px;
     }
+    @font-face{
+        font-family: "Pkmn";
+        src: url(pkmn.ttf);
+    }
+    #pkmnFont{
+        font-family: "Pkmn";
+    }
     </style>
 </head>
 <body>

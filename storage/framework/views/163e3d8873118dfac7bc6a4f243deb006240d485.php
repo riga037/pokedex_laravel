@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <br>
-<div class="content" style="text-align:center">
+<div id="pkmnFont"class="content" style="text-align:center">
 <h1>Who's That Pokémon ?</h1>
 <br>
 <div id="wrapper">
@@ -22,6 +22,7 @@ Enter a name: <input type="text" id="enteredName">
 <h3 id="points">0 points</h3>
 <h3 id="total"></h3>
 <h3 id="timer">Time left: 50 s</h3>
+<br>
 <input type="button" id="again" class="btn btn-dark" value="Next Pokémon">
 </div>
 

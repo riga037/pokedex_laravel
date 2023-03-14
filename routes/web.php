@@ -115,6 +115,10 @@ Route::group(['middleware'=>'auth'], function() {
         Route::get('/monstershow', function () {
             return view('monsters.api.show');
         });
+
+        Route::get('/monstermoves', function () {
+            return view('monsters.api.edit');
+        });
         
         Route::get('/movestable', function () {
             return view('moves.api.index');

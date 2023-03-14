@@ -8,7 +8,7 @@
 
 <hr>
 
-<input type="button" class="btn btn-dark" id="createButton" onclick="showForm()" value="Create/Update Form">
+<input type="button" class="btn btn-dark" id="createButton" onclick="showForm()" value="Create Form">
 
 <div id="createForm" style="display:none">
 Name:
@@ -19,7 +19,8 @@ Description:
 <input type="text" id="monsterDescriptionInput"><br><br>
 Type:
 <select id="monsterTypeInput"></select><br><br>
-<input type="button" class="btn btn-dark" id="saveButton" onclick="showForm()" value="Save new Monster">
+<input type="button" class="btn btn-dark" id="saveButton" value="Save new Monster">
+<input type="button" class="btn btn-dark" id="updateButton" value="Update Monster">
 </div>
 
 <div id="errors" class="alert alert-danger"></div>
@@ -56,9 +57,13 @@ const monsterCategoryInput = document.getElementById('monsterCategoryInput');
 const monsterDescriptionInput = document.getElementById('monsterDescriptionInput');
 const saveButton = document.getElementById('saveButton');
 saveButton.addEventListener('click', saveMonster);
+const updateButton = document.getElementById('updateButton');
+updateButton.addEventListener('click', updateMonster);
 
 const divErrors = document.getElementById("errors");
 divErrors.style.display = "none";
+
+var toUpdate = 0;
 
 const url = "http://localhost:8000/api/monsters";
 
@@ -66,7 +71,31 @@ function showForm() {
     
     document.getElementById("createButton").style.display = "none";
     document.getElementById("createForm").style.display = "block";
+    document.getElementById("saveButton").style.display = "block";
+    document.getElementById("updateButton").style.display = "none";
     
+}
+
+function showUpdateForm(id,typeid){
+    
+    document.getElementById("createButton").style.display = "none";
+    document.getElementById("createForm").style.display = "block";
+    document.getElementById("saveButton").style.display = "none";
+    document.getElementById("updateButton").style.display = "block";
+    
+    var tr = document.getElementById(id);
+    document.getElementById("monsterNameInput").value = tr.children[2].outerText;
+    document.getElementById("monsterCategoryInput").value = tr.children[3].outerText;
+    document.getElementById("monsterDescriptionInput").value = tr.children[4].outerText;
+    var options = document.getElementById("monsterTypeInput").children;
+    for (const option of options) {
+        if(option.value == typeid){
+            option.selected = true;
+        }else{
+            option.selected = false;
+        }
+    }
+    toUpdate = id;
 }
 
 function showErrors(errors) {
@@ -145,18 +174,18 @@ async function loadIntoTable(url) {
     
     for (const row of rows) {
         
-        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href='http://localhost:8000/monstershow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";
+        document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href='http://localhost:8000/monstershow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='showUpdateForm("+row.id+","+row.type.id+")' value='Update' class='btn btn-success m-2'><a href='http://localhost:8000/monstermoves?id="+row.id+"'><input type='button' value='Edit Moves' class='btn btn-dark m-2'></input></a></td></tr>";
+            
+        }
+        
+        const links = json.data.links;
+        
+        afegirLinks(links);
+        
+    } catch(error) {
         
     }
     
-    const links = json.data.links;
-    
-    afegirLinks(links);
-    
-} catch(error) {
-    
-}
-
 }
 
 async function getToken() {
@@ -168,12 +197,12 @@ async function getToken() {
             'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }
     });
-        const json = await response.json();
-        window.localStorage.setItem("token", json.token);
-        console.log(json);
-    } catch (error) {
-        console.log('error');
-    }
+    const json = await response.json();
+    window.localStorage.setItem("token", json.token);
+    console.log(json);
+} catch (error) {
+    console.log('error');
+}
 }
 
 async function getUser() {
@@ -218,32 +247,38 @@ async function saveMonster(event)  {
             body: JSON.stringify(newMonster)
         }
         
-        );
+    );
+    
+    const data = await response.json();
+    
+    console.log(response);
+    
+    if(response.ok) {
         
-        const data = await response.json();
+        console.log(data.data);
+        document.getElementById("taula").innerHTML = "";
+        pagination.innerHTML = "";
         
-        console.log(response);
+        document.getElementById("createButton").style.display = "block";
+        document.getElementById("createForm").style.display = "none";
+        document.getElementById("saveButton").style.display = "block";
+        document.getElementById("updateButton").style.display = "none";
         
-        if(response.ok) {
-            
-            console.log(data.data);
-            document.getElementById("taula").innerHTML = "";
-            pagination.innerHTML = "";
-            loadIntoTable(url);
-            
-        } else {
-            
-            showErrors(data.data);
-            console.log("Error creating monster.");
-            
-        }
+        loadIntoTable(url);
         
-    } catch (error) {
-        //Errors de xarxa/connexió amb el servidor
-        console.log('Server/network error.');
+    } else {
+        
+        showErrors(data.data);
+        console.log("Error creating monster.");
         
     }
     
+} catch (error) {
+    //Errors de xarxa/connexió amb el servidor
+    console.log('Server/network error.');
+    
+}
+
 }
 
 async function deleteMonster(id) {
@@ -277,17 +312,17 @@ async function deleteMonster(id) {
     
 }
 
-async function updateMonster(id) {
+async function updateMonster(event) {
     
-    console.log(id)
+    console.log(toUpdate)
     
-    var rowName = document.getElementById(id).children[2];
+    var rowName = document.getElementById(toUpdate).children[2];
     console.log(rowName);
-    var rowCategory = document.getElementById(id).children[3];
+    var rowCategory = document.getElementById(toUpdate).children[3];
     console.log(rowCategory);
-    var rowDescription = document.getElementById(id).children[4];
+    var rowDescription = document.getElementById(toUpdate).children[4];
     console.log(rowDescription);
-    var rowType = document.getElementById(id).children[5];
+    var rowType = document.getElementById(toUpdate).children[5];
     console.log(rowType);
     
     var updatedMonster = {
@@ -299,7 +334,7 @@ async function updateMonster(id) {
     
     try {
         
-        const response = await fetch(url+"/"+id, {method: "PUT", headers: {
+        const response = await fetch(url+"/"+toUpdate, {method: "PUT", headers: {
             'Content-type': 'application/json',
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + window.localStorage.getItem('token')
@@ -308,12 +343,17 @@ async function updateMonster(id) {
         const data = await response.json();
         
         if(response.ok) {
-            const row = document.getElementById(id);
+            const row = document.getElementById(toUpdate);
             console.log(row);
             rowName.innerHTML = data.data.monstername;
             rowCategory.innerHTML = data.data.category;
             rowDescription.innerHTML = data.data.description;
             rowType.innerHTML = data.data.type.name;
+            
+            document.getElementById("createButton").style.display = "block";
+            document.getElementById("createForm").style.display = "none";
+            document.getElementById("saveButton").style.display = "block";
+            document.getElementById("updateButton").style.display = "none";
             
         } else {
             console.log("Updating error.");
@@ -333,37 +373,37 @@ async function updateMonster(id) {
 function afegirFila(row) {
     
     document.getElementById("taula").innerHTML += "<tr id='"+row.id+"'><td>"+row.id+"</td><td><img src='/img/show/" + row.id + ".gif' onerror='"+noImage+"'></td><td>"+row.monstername+"</td><td>"+row.category+"</td><td>"+row.description+"</td><td>"+row.type.name+"</td><td><a href='http://localhost:8000/monstershow?id="+row.id+"'><input type='button' value='Show' class='btn btn-info m-2'></input></a><input type=button onclick='deleteMonster("+row.id+")' value='Delete' class='btn btn-danger m-2'><input type=button onclick='updateMonster("+row.id+")' value='Update' class='btn btn-success m-2'></td></tr>";    
-    
-}
-
-async function getInfos() {
-    await getToken();
-    await getUser();
-}
-
-async function loadTypes(){
-
-    try {
-        
-        const response = await fetch("http://localhost:8000/api/types",
-        {headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-        }
-    });
-    const json = await response.json();
-    const rows = json.data.data;
-    
-    for (const row of rows) {
-        
-        document.getElementById("monsterTypeInput").innerHTML += "<option value='"+row.id+"'>"+row.name+"</option>";
         
     }
     
-} catch(error) {
+    async function getInfos() {
+        await getToken();
+        await getUser();
+    }
     
-}
+    async function loadTypes(){
+        
+        try {
+            
+            const response = await fetch("http://localhost:8000/api/types",
+            {headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }
+        });
+        const json = await response.json();
+        const rows = json.data.data;
+        
+        for (const row of rows) {
+            
+            document.getElementById("monsterTypeInput").innerHTML += "<option value='"+row.id+"'>"+row.name+"</option>";
+            
+        }
+        
+    } catch(error) {
+        
+    }
 }
 
 getInfos();
